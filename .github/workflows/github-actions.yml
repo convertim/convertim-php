@@ -10,4 +10,4 @@ jobs:
       - name: Phing Build
         uses: phingofficial/phing-github-action@main
         with:
-          targets: composer-dev standards tests
+          targets: composer-dev linter tests
