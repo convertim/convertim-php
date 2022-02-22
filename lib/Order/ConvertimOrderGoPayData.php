@@ -30,24 +30,32 @@ class ConvertimOrderGoPayData
     private $state;
 
     /**
+     * @var string
+     */
+    private $goPayFik;
+
+    /**
      * @param int $amount
      * @param string $orderNumber
      * @param string $currency
      * @param int $id
      * @param string $state
+     * @param string|null $goPayFik
      */
     public function __construct(
         $amount,
         $orderNumber,
         $currency,
         $id,
-        $state
+        $state,
+        $goPayFik = null
     ) {
         $this->amount = $amount;
         $this->orderNumber = $orderNumber;
         $this->currency = $currency;
         $this->id = $id;
         $this->state = $state;
+        $this->goPayFik = $goPayFik;
     }
 
     /**
@@ -88,5 +96,13 @@ class ConvertimOrderGoPayData
     public function getState()
     {
         return $this->state;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoPayFik()
+    {
+        return $this->goPayFik;
     }
 }
