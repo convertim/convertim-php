@@ -207,12 +207,18 @@ class ConvertimOrderDataFactory
      */
     public function createConvertimOrderGoPayDataFromJsonArray($goPayJsonArray)
     {
+        $eetFikData = null;
+        if (array_key_exists('eet_code', $goPayJsonArray)) {
+            $eetFikData = $goPayJsonArray['eet_code']['fik'];
+        }
+
         return new ConvertimOrderGoPayData(
             $goPayJsonArray['amount'],
             $goPayJsonArray['order_number'],
             $goPayJsonArray['currency'],
             $goPayJsonArray['id'],
-            $goPayJsonArray['state']
+            $goPayJsonArray['state'],
+            $eetFikData
         );
     }
 
