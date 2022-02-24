@@ -15,6 +15,11 @@ class ConvertimOrderTransportData
     private $type;
 
     /**
+     * @var string|null
+     */
+    private $source;
+
+    /**
      * @var string
      */
     private $priceWithoutVat;
@@ -44,21 +49,24 @@ class ConvertimOrderTransportData
      * @param string $priceWithoutVat
      * @param string $priceWithVat
      * @param string $vatRate
+     * @param null $source
      * @param string|null $type
      * @param \Convertim\Order\ConvertimOrderTransportExtraData|null $extra
-     * @param \Convertim\Order\ConvertimOrderTransportServiceData[]  $services
+     * @param \Convertim\Order\ConvertimOrderTransportServiceData[] $services
      */
     public function __construct(
         $uuid,
         $priceWithoutVat,
         $priceWithVat,
         $vatRate,
+        $source = null,
         $type = null,
         $extra = null,
         $services = []
     ) {
         $this->uuid = $uuid;
         $this->type = $type;
+        $this->source = $source;
         $this->priceWithoutVat = $priceWithoutVat;
         $this->priceWithVat = $priceWithVat;
         $this->vatRate = $vatRate;
@@ -80,6 +88,14 @@ class ConvertimOrderTransportData
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->source;
     }
 
     /**

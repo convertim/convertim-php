@@ -131,6 +131,7 @@ class ConvertimOrderDataFactory
             $transportJsonArray['priceWithoutVat'],
             $transportJsonArray['priceWithVat'],
             $transportJsonArray['vatRate'],
+            $transportJsonArray['source'],
             $transportJsonArray['type'],
             $extraData
         );
