@@ -86,7 +86,7 @@ class ConvertimOrderDataFactory
         return new ConvertimCustomerBillingAddressData(
             $billingAddressJsonArray['name'],
             $billingAddressJsonArray['lastName'],
-            $billingAddressJsonArray['address'],
+            $billingAddressJsonArray['street'],
             $billingAddressJsonArray['city'],
             $billingAddressJsonArray['postalCode'],
             $billingAddressJsonArray['country'],
@@ -105,10 +105,10 @@ class ConvertimOrderDataFactory
         return new ConvertimCustomerDeliveryAddressData(
             $deliveryAddressJsonArray['name'],
             $deliveryAddressJsonArray['lastName'],
-            $deliveryAddressJsonArray['address'],
+            $deliveryAddressJsonArray['street'],
             $deliveryAddressJsonArray['city'],
             $deliveryAddressJsonArray['postalCode'],
-            $deliveryAddressJsonArray['state'],
+            $deliveryAddressJsonArray['country'],
             $deliveryAddressJsonArray['companyName'],
             $deliveryAddressJsonArray['carrierPhonePrefix'],
             $deliveryAddressJsonArray['carrierPhoneNumber']
