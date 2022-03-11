@@ -35,12 +35,18 @@ class ConvertimOrderItemData
     private $vatRate;
 
     /**
+     * @var array
+     */
+    private $extra;
+
+    /**
      * @param string $productId
      * @param string $productName
      * @param float|int|string $quantity
      * @param string $priceWithoutVat
      * @param string $priceWithVat
      * @param string $vatRate
+     * @param array $extra
      */
     public function __construct(
         $productId,
@@ -48,7 +54,8 @@ class ConvertimOrderItemData
         $quantity,
         $priceWithoutVat,
         $priceWithVat,
-        $vatRate
+        $vatRate,
+        $extra
     ) {
         $this->productId = $productId;
         $this->productName = $productName;
@@ -56,6 +63,7 @@ class ConvertimOrderItemData
         $this->priceWithoutVat = $priceWithoutVat;
         $this->priceWithVat = $priceWithVat;
         $this->vatRate = $vatRate;
+        $this->extra = $extra;
     }
 
     /**
@@ -104,5 +112,13 @@ class ConvertimOrderItemData
     public function getVatRate()
     {
         return $this->vatRate;
+    }
+
+    /**
+     * @return array
+     */
+    public function getExtra()
+    {
+        return $this->extra;
     }
 }

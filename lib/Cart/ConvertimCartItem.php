@@ -60,6 +60,11 @@ class ConvertimCartItem implements \JsonSerializable
     private $labels;
 
     /**
+     * @var string[]
+     */
+    private $extra;
+
+    /**
      * @param string $id
      * @param string $name
      * @param float|int|string $quantity
@@ -71,9 +76,22 @@ class ConvertimCartItem implements \JsonSerializable
      * @param \Convertim\Cart\ConvertimCartItemDiscount[] $discounts
      * @param \Convertim\Cart\ConvertimCartItemAdditional[] $additional
      * @param string[] $labels
+     * @param array $extra
      */
-    public function __construct($id, $name, $quantity, $priceWithoutVat, $priceWithVat, $vat, $image, $gtm = [], $discounts = [], $additional = [], $labels = [])
-    {
+    public function __construct(
+        $id,
+        $name,
+        $quantity,
+        $priceWithoutVat,
+        $priceWithVat,
+        $vat,
+        $image,
+        $gtm = [],
+        $discounts = [],
+        $additional = [],
+        $labels = [],
+        $extra = []
+    ) {
         $this->id = $id;
         $this->name = $name;
         $this->quantity = $quantity;
@@ -85,6 +103,7 @@ class ConvertimCartItem implements \JsonSerializable
         $this->discounts = $discounts;
         $this->additional = $additional;
         $this->labels = $labels;
+        $this->extra = $extra;
     }
 
     /**
@@ -112,6 +131,7 @@ class ConvertimCartItem implements \JsonSerializable
             ),
             'additional' => $this->additional,
             'labels' => $this->labels,
+            'extra' => $this->extra,
         ];
     }
 }

@@ -186,7 +186,8 @@ class ConvertimOrderDataFactory
             $orderItemJsonArray['quantity'],
             $orderItemJsonArray['priceWithoutVat'],
             $orderItemJsonArray['priceWithVat'],
-            $orderItemJsonArray['vatRate']
+            $orderItemJsonArray['vatRate'],
+            $orderItemJsonArray['extra']
         );
     }
 

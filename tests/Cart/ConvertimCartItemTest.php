@@ -33,6 +33,7 @@ class ConvertimCartItemTest extends TestCase
                 'discounts' => [],
                 'additional' => [],
                 'labels' => [],
+                'extra' => [],
             ])
         );
     }
@@ -58,6 +59,9 @@ class ConvertimCartItemTest extends TestCase
             ],
             [
                 'PROMO CODE'
+            ],
+            [
+                'key' => 'value',
             ]
         );
 
@@ -86,6 +90,9 @@ class ConvertimCartItemTest extends TestCase
                 'labels' => [
                     'PROMO CODE',
                 ],
+                'extra' => [
+                    'key' => 'value'
+                ]
             ])
         );
     }
