@@ -60,6 +60,11 @@ class ConvertimPayment implements \JsonSerializable
     private $restrictedTransports;
 
     /**
+     * @var string|null
+     */
+    private $paymentInstruction;
+
+    /**
      * @param string $uuid
      * @param string $type
      * @param string $name
@@ -71,6 +76,7 @@ class ConvertimPayment implements \JsonSerializable
      * @param \Convertim\Payment\ConvertimAdyenData|null $adyen
      * @param string|null $paymentDescription
      * @param string[] $restrictedTransports
+     * @param string|null $paymentInstruction
      */
     public function __construct(
         $uuid,
@@ -83,7 +89,8 @@ class ConvertimPayment implements \JsonSerializable
         $gopay = null,
         $adyen = null,
         $paymentDescription = null,
-        $restrictedTransports = []
+        $restrictedTransports = [],
+        $paymentInstruction = null
     ) {
         $this->uuid = $uuid;
         $this->type = $type;
@@ -96,6 +103,7 @@ class ConvertimPayment implements \JsonSerializable
         $this->adyen = $adyen;
         $this->paymentDescription = $paymentDescription;
         $this->restrictedTransports = $restrictedTransports;
+        $this->paymentInstruction = $paymentInstruction;
     }
 
     /**
@@ -115,6 +123,7 @@ class ConvertimPayment implements \JsonSerializable
             'adyen' => $this->adyen,
             'paymentDescription' => $this->paymentDescription,
             'restrictedTransports' => $this->restrictedTransports,
+            'paymentInstruction' => $this->paymentInstruction,
         ];
     }
 }
