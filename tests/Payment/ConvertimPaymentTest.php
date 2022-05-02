@@ -36,6 +36,7 @@ class ConvertimPaymentTest extends TestCase
                 'adyen' => [],
                 'paymentDescription' => 'description',
                 'restrictedTransports' => [],
+                'paymentInstruction' => null,
             ])
         );
     }

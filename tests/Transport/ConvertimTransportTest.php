@@ -38,6 +38,7 @@ class ConvertimTransportTest extends TestCase
                 'source' => 'DPD',
                 'group' => 'pickup places',
                 'services' => [],
+                'transportInstruction' => null,
             ])
         );
     }

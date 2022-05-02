@@ -55,6 +55,16 @@ class ConvertimOrderData
     private $disallowHeurekaVerifiedByCustomers;
 
     /**
+     * @var bool
+     */
+    private $registerToNewsletter;
+
+    /**
+     * @var bool
+     */
+    private $registerToEshop;
+
+    /**
      * @param string $uuid
      * @param string|null $note
      * @param bool $disallowHeurekaVerifiedByCustomers
@@ -65,6 +75,8 @@ class ConvertimOrderData
      * @param \Convertim\Order\ConvertimOrderPromoCodesData[] $promoCodes
      * @param \Convertim\Order\ConvertimOrderGoPayData|null $goPayData
      * @param \Convertim\Order\ConvertimOrderAdyenData|null $adyenData
+     * @param bool $registerToNewsletter
+     * @param bool $registerToEshop
      */
     public function __construct(
         $uuid,
@@ -76,7 +88,9 @@ class ConvertimOrderData
         $orderItemsData,
         $promoCodes,
         $goPayData = null,
-        $adyenData = null
+        $adyenData = null,
+        $registerToNewsletter = false,
+        $registerToEshop = false
     ) {
         $this->uuid = $uuid;
         $this->note = $note;
@@ -88,6 +102,8 @@ class ConvertimOrderData
         $this->promoCodes = $promoCodes;
         $this->goPayData = $goPayData;
         $this->adyenData = $adyenData;
+        $this->registerToNewsletter = $registerToNewsletter;
+        $this->registerToEshop = $registerToEshop;
     }
 
     /**
@@ -173,8 +189,24 @@ class ConvertimOrderData
     /**
      * @return bool
      */
-    public function isDisallowHeurekaVerifiedByCustomers(): bool
+    public function isDisallowHeurekaVerifiedByCustomers()
     {
         return $this->disallowHeurekaVerifiedByCustomers;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRegisterToNewsletter()
+    {
+        return $this->registerToNewsletter;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isRegisterToEshop()
+    {
+        return $this->registerToEshop;
     }
 }

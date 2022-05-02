@@ -37,6 +37,16 @@ class ConvertimOrderDataFactory
             $goPayData = $this->createConvertimOrderAdyenDataFromJsonArray($orderJsonArray['adyen']);
         }
 
+        $registerToNewsletter = false;
+        if (array_key_exists('registerToNewsletter', $orderJsonArray) && $orderJsonArray['registerToNewsletter'] !== null) {
+            $registerToNewsletter = $orderJsonArray['registerToNewsletter'];
+        }
+
+        $registerToEshop = false;
+        if (array_key_exists('registerToEshop', $orderJsonArray) && $orderJsonArray['registerToEshop'] !== null) {
+            $registerToEshop = $orderJsonArray['registerToEshop'];
+        }
+
         return new ConvertimOrderData(
             $orderJsonArray['header']['uuid'],
             $orderJsonArray['header']['comment'],
@@ -47,7 +57,9 @@ class ConvertimOrderDataFactory
             $itemsData,
             $promoCodesData,
             $goPayData,
-            $adyenData
+            $adyenData,
+            $registerToNewsletter,
+            $registerToEshop
         );
     }
 
