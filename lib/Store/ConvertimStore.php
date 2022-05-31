@@ -10,6 +10,11 @@ class ConvertimStore implements \JsonSerializable
     /**
      * @var string
      */
+    private $name;
+
+    /**
+     * @var string
+     */
     private $code;
 
     /**
@@ -48,6 +53,7 @@ class ConvertimStore implements \JsonSerializable
     private $hours;
 
     /**
+     * @param string $name
      * @param string $code
      * @param string $latitude
      * @param string $longitude
@@ -57,8 +63,9 @@ class ConvertimStore implements \JsonSerializable
      * @param string $city
      * @param \Convertim\Store\ConvertimStoreOpeningHour[] $hours
      */
-    public function __construct($code, $latitude, $longitude, $company, $street, $postcode, $city, array $hours)
+    public function __construct($name, $code, $latitude, $longitude, $company, $street, $postcode, $city, array $hours)
     {
+        $this->name = $name;
         $this->code = $code;
         $this->latitude = $latitude;
         $this->longitude = $longitude;
@@ -73,6 +80,7 @@ class ConvertimStore implements \JsonSerializable
     function jsonSerialize()
     {
         return [
+            'name' => $this->name,
             'code' => $this->code,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
