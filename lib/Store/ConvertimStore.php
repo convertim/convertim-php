@@ -2,10 +2,10 @@
 
 namespace Convertim\Store;
 
+use Convertim\Transport\ConvertimTransportSources;
+
 class ConvertimStore implements \JsonSerializable
 {
-
-    const SOURCE_STORE = 'store';
 
     /**
      * @var string
@@ -81,7 +81,7 @@ class ConvertimStore implements \JsonSerializable
             'postcode' => $this->postcode,
             'city' => $this->city,
             'hours' => $this->hours,
-            'source' => self::SOURCE_STORE,
+            'source' => ConvertimTransportSources::SOURCE_STORES,
         ];
     }
 }
