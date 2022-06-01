@@ -38,12 +38,12 @@ class ConvertimOrderDataFactory
         }
 
         $registerToNewsletter = false;
-        if (array_key_exists('registerToNewsletter', $orderJsonArray) && $orderJsonArray['header']['registerToNewsletter'] !== null) {
+        if (array_key_exists('registerToNewsletter', $orderJsonArray['header']) && $orderJsonArray['header']['registerToNewsletter'] !== null) {
             $registerToNewsletter = $orderJsonArray['registerToNewsletter'];
         }
 
         $registerToEshop = false;
-        if (array_key_exists('registerToEshop', $orderJsonArray) && $orderJsonArray['header']['registerToEshop'] !== null) {
+        if (array_key_exists('registerToEshop', $orderJsonArray['header']) && $orderJsonArray['header']['registerToEshop'] !== null) {
             $registerToEshop = $orderJsonArray['registerToEshop'];
         }
 
