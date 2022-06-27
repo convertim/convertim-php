@@ -15,13 +15,20 @@ class ConvertimCartData implements \JsonSerializable
     private $promoCodes;
 
     /**
-     * @param \Convertim\Cart\ConvertimCartItem[]  $items
-     * @param \Convertim\Cart\ConvertimPromoCode[] $promoCodes
+     * @var array
      */
-    public function __construct(array $items, array $promoCodes)
+    private $extras;
+
+    /**
+     * @param \Convertim\Cart\ConvertimCartItem[] $items
+     * @param \Convertim\Cart\ConvertimPromoCode[] $promoCodes
+     * @param array $extras
+     */
+    public function __construct(array $items, array $promoCodes, array $extras = [])
     {
         $this->items = $items;
         $this->promoCodes = $promoCodes;
+        $this->extras = $extras;
     }
 
     /**
@@ -32,6 +39,7 @@ class ConvertimCartData implements \JsonSerializable
         return [
             'items' => $this->items,
             'promoCodes' => $this->promoCodes,
+            'extras' => $this->extras,
         ];
     }
 }
