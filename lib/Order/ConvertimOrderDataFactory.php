@@ -20,7 +20,7 @@ class ConvertimOrderDataFactory
             $orderJsonArray['items']
         );
 
-        $cartExtraData = null;
+        $cartExtraData = [];
         if (array_key_exists('cartExtraData', $orderJsonArray)) {
             $cartExtraData = $orderJsonArray['cartExtraData'];
         }
