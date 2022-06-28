@@ -65,6 +65,11 @@ class ConvertimOrderData
     private $registerToEshop;
 
     /**
+     * @var array
+     */
+    private $cartExtraData;
+
+    /**
      * @param string $uuid
      * @param string|null $note
      * @param bool $disallowHeurekaVerifiedByCustomers
@@ -77,6 +82,7 @@ class ConvertimOrderData
      * @param \Convertim\Order\ConvertimOrderAdyenData|null $adyenData
      * @param bool $registerToNewsletter
      * @param bool $registerToEshop
+     * @param array $cartExtraData
      */
     public function __construct(
         $uuid,
@@ -90,7 +96,8 @@ class ConvertimOrderData
         $goPayData = null,
         $adyenData = null,
         $registerToNewsletter = false,
-        $registerToEshop = false
+        $registerToEshop = false,
+        $cartExtraData = []
     ) {
         $this->uuid = $uuid;
         $this->note = $note;
@@ -104,6 +111,7 @@ class ConvertimOrderData
         $this->adyenData = $adyenData;
         $this->registerToNewsletter = $registerToNewsletter;
         $this->registerToEshop = $registerToEshop;
+        $this->cartExtraData = $cartExtraData;
     }
 
     /**
@@ -208,5 +216,13 @@ class ConvertimOrderData
     public function isRegisterToEshop()
     {
         return $this->registerToEshop;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCartExtraData()
+    {
+        return $this->cartExtraData;
     }
 }

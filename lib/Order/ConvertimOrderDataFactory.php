@@ -20,6 +20,11 @@ class ConvertimOrderDataFactory
             $orderJsonArray['items']
         );
 
+        $cartExtraData = null;
+        if (array_key_exists('cartExtraData', $orderJsonArray)) {
+            $cartExtraData = $orderJsonArray['cartExtraData'];
+        }
+
         $promoCodesData = array_map(
             function ($promoCode) {
                 return $this->createConvertimOrderPromoCodeDataFromJsonArray($promoCode);
@@ -59,7 +64,8 @@ class ConvertimOrderDataFactory
             $goPayData,
             $adyenData,
             $registerToNewsletter,
-            $registerToEshop
+            $registerToEshop,
+            $cartExtraData
         );
     }
 
