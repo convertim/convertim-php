@@ -41,7 +41,7 @@ class ApiClient
     public function doRequest($convertimAnalyticsData)
     {
         $options['base_uri'] = $this->isProductionMode ? self::CONVERTIM_BASE_URI_PRODUCTION : self::CONVERTIM_BASE_URI_DEVEL;
-        $options['Headers'][self::CONVERTIM_AUTH_HEADER_NAME] = self::CONVERTIM_AUTH_HEADER;
+        $options['headers'][self::CONVERTIM_AUTH_HEADER_NAME] = self::CONVERTIM_AUTH_HEADER;
         $options['json'] = $convertimAnalyticsData;
 
         try {
