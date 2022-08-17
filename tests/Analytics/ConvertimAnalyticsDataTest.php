@@ -16,7 +16,9 @@ class ConvertimAnalyticsDataTest extends TestCase
             0,
             'mobile',
             '127.0.0.1',
-            'hash'
+            'hash',
+            3,
+            '33.33'
         );
 
         $this->assertJsonStringEqualsJsonString(
@@ -31,6 +33,8 @@ class ConvertimAnalyticsDataTest extends TestCase
                 'variant' => 'original',
                 'ipAddress' => '127.0.0.1',
                 'hash' => 'hash',
+                'orderItemCount' => 3,
+                'orderItemPrice' => '33.33',
             ])
         );
     }

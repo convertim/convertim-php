@@ -54,9 +54,19 @@ class ConvertimAnalyticsData implements \JsonSerializable
     private $ipAddress;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $hash;
+
+    /**
+     * @var int
+     */
+    private $orderItemCount;
+
+    /**
+     * @var string|null
+     */
+    private $orderItemPrice;
 
     /**
      * @param string $deviceUuid
@@ -65,9 +75,21 @@ class ConvertimAnalyticsData implements \JsonSerializable
      * @param string $totalCustomersCountOfOrders
      * @param string $device
      * @param string $ipAddress
-     * @param string $hash
+     * @param string|null $hash
+     * @param int $orderItemCount
+     * @param string|null $orderItemPrice
      */
-    public function __construct($deviceUuid, $action, $eshop, $totalCustomersCountOfOrders, $device, $ipAddress, $hash)
+    public function __construct(
+        $deviceUuid,
+        $action,
+        $eshop,
+        $totalCustomersCountOfOrders,
+        $device,
+        $ipAddress,
+        $hash = null,
+        $orderItemCount = 0,
+        $orderItemPrice = null
+    )
     {
         $this->deviceUuid = $deviceUuid;
         $this->action = $action;
@@ -76,6 +98,8 @@ class ConvertimAnalyticsData implements \JsonSerializable
         $this->device = $device;
         $this->ipAddress = $ipAddress;
         $this->hash = $hash;
+        $this->orderItemCount = $orderItemCount;
+        $this->orderItemPrice = $orderItemPrice;
 
         $this->external = true;
         $this->variant = self::EXPERIMENT_VARIANT_ORIGINAL;
@@ -96,6 +120,8 @@ class ConvertimAnalyticsData implements \JsonSerializable
             'variant' => $this->variant,
             'ipAddress' => $this->ipAddress,
             'hash' => $this->hash,
+            'orderItemCount' => $this->orderItemCount,
+            'orderItemPrice' => $this->orderItemPrice,
         ];
     }
 }

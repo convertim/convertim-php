@@ -29,6 +29,8 @@ class ConvertimAnalyticsDataFactoryTest extends TestCase
                 'variant' => 'original',
                 'ipAddress' => '127.0.0.1',
                 'hash' => 'hash',
+                'orderItemCount' => 0,
+                'orderItemPrice' => null,
             ])
         );
     }
@@ -55,6 +57,8 @@ class ConvertimAnalyticsDataFactoryTest extends TestCase
                 'variant' => 'original',
                 'ipAddress' => '127.0.0.1',
                 'hash' => 'hash',
+                'orderItemCount' => 0,
+                'orderItemPrice' => null,
             ])
         );
     }
@@ -67,7 +71,9 @@ class ConvertimAnalyticsDataFactoryTest extends TestCase
             'mobile',
             '127.0.0.1',
             'hash',
-            5
+            5,
+            3,
+            '33.33'
         );
 
         $this->assertJsonStringEqualsJsonString(
@@ -82,6 +88,8 @@ class ConvertimAnalyticsDataFactoryTest extends TestCase
                 'variant' => 'original',
                 'ipAddress' => '127.0.0.1',
                 'hash' => 'hash',
+                'orderItemCount' => 3,
+                'orderItemPrice' => '33.33',
             ])
         );
     }

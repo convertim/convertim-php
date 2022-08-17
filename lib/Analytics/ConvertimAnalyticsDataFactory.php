@@ -53,9 +53,20 @@ class ConvertimAnalyticsDataFactory
      * @param string $ipAddress
      * @param string $hash
      * @param int $totalCustomersCountOfOrders
+     * @param int $orderItemCount
+     * @param null $orderItemPrice
      * @return \Convertim\Analytics\ConvertimAnalyticsData
      */
-    public static function createOrderAnalyticsData($deviceUuid, $eshop, $device, $ipAddress, $hash, $totalCustomersCountOfOrders)
+    public static function createOrderAnalyticsData(
+        $deviceUuid,
+        $eshop,
+        $device,
+        $ipAddress,
+        $hash,
+        $totalCustomersCountOfOrders,
+        $orderItemCount = 0,
+        $orderItemPrice = null
+    )
     {
         return new ConvertimAnalyticsData(
             $deviceUuid,
@@ -64,7 +75,9 @@ class ConvertimAnalyticsDataFactory
             $totalCustomersCountOfOrders,
             $device,
             $ipAddress,
-            $hash
+            $hash,
+            $orderItemCount,
+            $orderItemPrice
         );
     }
 }
