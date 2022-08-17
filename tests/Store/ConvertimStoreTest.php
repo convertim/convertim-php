@@ -9,6 +9,7 @@ class ConvertimStoreTest extends TestCase
     {
         $convertimStore = new ConvertimStore(
             'ABC',
+            'code',
             '51.123',
             '15.456',
             'Company',
@@ -21,14 +22,15 @@ class ConvertimStoreTest extends TestCase
         $this->assertJsonStringEqualsJsonString(
             json_encode($convertimStore),
             json_encode([
-                'code' => 'ABC',
+                'name' => 'ABC',
+                'code' => 'code',
                 'latitude' => '51.123',
                 'longitude' => '15.456',
                 'company' => 'Company',
                 'street' => 'Street',
                 'postcode' => '10000',
                 'city' => 'Prague',
-                'source' => 'store',
+                'source' => 'stores',
                 'hours' => [],
             ])
         );

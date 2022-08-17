@@ -9,7 +9,9 @@
     }
   ],
   "require": {
-    "php": ">=5.6.0"
+    "php": ">=5.6.0",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "^6.5"
   },
   "require-dev": {
     "phing/phing": "2.*",
