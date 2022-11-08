@@ -89,8 +89,7 @@ class ConvertimAnalyticsData implements \JsonSerializable
         $hash = null,
         $orderItemCount = 0,
         $orderItemPrice = null
-    )
-    {
+    ) {
         $this->deviceUuid = $deviceUuid;
         $this->action = $action;
         $this->eshop = $eshop;

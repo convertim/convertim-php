@@ -66,8 +66,7 @@ class ConvertimAnalyticsDataFactory
         $totalCustomersCountOfOrders,
         $orderItemCount = 0,
         $orderItemPrice = null
-    )
-    {
+    ) {
         return new ConvertimAnalyticsData(
             $deviceUuid,
             ConvertimAnalyticsData::ACTION_ORDER,
