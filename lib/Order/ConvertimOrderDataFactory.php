@@ -42,6 +42,11 @@ class ConvertimOrderDataFactory
             $goPayData = $this->createConvertimOrderAdyenDataFromJsonArray($orderJsonArray['adyen']);
         }
 
+        $paypalData = null;
+        if (array_key_exists('paypal', $orderJsonArray) && $orderJsonArray['paypal'] !== null) {
+            $paypalData = $this->createConvertimOrderPaypalDataFromJsonArray($orderJsonArray['paypal']);
+        }
+
         $registerToNewsletter = false;
         if (array_key_exists('registerToNewsletter', $orderJsonArray['header']) && $orderJsonArray['header']['registerToNewsletter'] !== null) {
             $registerToNewsletter = $orderJsonArray['header']['registerToNewsletter'];
@@ -65,7 +70,8 @@ class ConvertimOrderDataFactory
             $adyenData,
             $registerToNewsletter,
             $registerToEshop,
-            $cartExtraData
+            $cartExtraData,
+            $paypalData
         );
     }
 
@@ -250,6 +256,19 @@ class ConvertimOrderDataFactory
     {
         return new ConvertimOrderAdyenData(
             $adyenJsonArray['id']
+        );
+    }
+
+    /**
+     * @param  array $paypalJsonArray
+     * @return \Convertim\Order\ConvertimOrderPaypalData
+     */
+    public function createConvertimOrderPaypalDataFromJsonArray($paypalJsonArray)
+    {
+        return new ConvertimOrderPaypalData(
+            $paypalJsonArray['id'],
+            $paypalJsonArray['state'],
+            $paypalJsonArray['cart']
         );
     }
 

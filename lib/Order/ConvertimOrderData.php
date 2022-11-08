@@ -70,6 +70,11 @@ class ConvertimOrderData
     private $cartExtraData;
 
     /**
+     * @var \Convertim\Order\ConvertimOrderPaypalData|null
+     */
+    private $paypalData;
+
+    /**
      * @param string $uuid
      * @param string|null $note
      * @param bool $disallowHeurekaVerifiedByCustomers
@@ -83,6 +88,7 @@ class ConvertimOrderData
      * @param bool $registerToNewsletter
      * @param bool $registerToEshop
      * @param array $cartExtraData
+     * @param \Convertim\Order\ConvertimOrderPaypalData|null $paypalData
      */
     public function __construct(
         $uuid,
@@ -97,7 +103,8 @@ class ConvertimOrderData
         $adyenData = null,
         $registerToNewsletter = false,
         $registerToEshop = false,
-        $cartExtraData = []
+        $cartExtraData = [],
+        $paypalData = null
     ) {
         $this->uuid = $uuid;
         $this->note = $note;
@@ -112,6 +119,7 @@ class ConvertimOrderData
         $this->registerToNewsletter = $registerToNewsletter;
         $this->registerToEshop = $registerToEshop;
         $this->cartExtraData = $cartExtraData;
+        $this->paypalData = $paypalData;
     }
 
     /**
@@ -224,5 +232,13 @@ class ConvertimOrderData
     public function getCartExtraData()
     {
         return $this->cartExtraData;
+    }
+
+    /**
+     * @return \Convertim\Order\ConvertimOrderPaypalData|null
+     */
+    public function getPaypalData()
+    {
+        return $this->paypalData;
     }
 }
