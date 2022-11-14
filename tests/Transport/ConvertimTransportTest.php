@@ -20,7 +20,9 @@ class ConvertimTransportTest extends TestCase
             'description',
             'DPD',
             'pickup places',
-            []
+            [],
+            'Instruction',
+            'Tomorrow'
         );
 
         $this->assertJsonStringEqualsJsonString(
@@ -38,7 +40,8 @@ class ConvertimTransportTest extends TestCase
                 'source' => 'DPD',
                 'group' => 'pickup places',
                 'services' => [],
-                'transportInstruction' => null,
+                'transportInstruction' => 'Instruction',
+                'deliveryTime' => 'Tomorrow',
             ])
         );
     }

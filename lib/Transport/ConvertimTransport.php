@@ -70,6 +70,11 @@ class ConvertimTransport implements \JsonSerializable
     private $transportInstruction;
 
     /**
+     * @var string|null
+     */
+    private $deliveryTime;
+
+    /**
      * @param string $uuid
      * @param string $name
      * @param bool $isShortForm
@@ -83,6 +88,7 @@ class ConvertimTransport implements \JsonSerializable
      * @param string|null $group
      * @param string[] $services
      * @param string|null $transportInstruction
+     * @param string|null $deliveryTime
      */
     public function __construct(
         $uuid,
@@ -97,7 +103,8 @@ class ConvertimTransport implements \JsonSerializable
         $source = null,
         $group = null,
         $services = [],
-        $transportInstruction = null
+        $transportInstruction = null,
+        $deliveryTime = null
     ) {
         $this->uuid = $uuid;
         $this->name = $name;
@@ -112,6 +119,7 @@ class ConvertimTransport implements \JsonSerializable
         $this->group = $group;
         $this->services = $services;
         $this->transportInstruction = $transportInstruction;
+        $this->deliveryTime = $deliveryTime;
     }
 
     public function jsonSerialize()
@@ -130,6 +138,7 @@ class ConvertimTransport implements \JsonSerializable
             'group' => $this->group,
             'services' => $this->services,
             'transportInstruction' => $this->transportInstruction,
+            'deliveryTime' => $this->deliveryTime
         ];
     }
 }
