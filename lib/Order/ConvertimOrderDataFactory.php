@@ -108,6 +108,7 @@ class ConvertimOrderDataFactory
         }
 
         return new ConvertimCustomerBillingAddressData(
+            $billingAddressJsonArray['uuid'],
             $billingAddressJsonArray['name'],
             $billingAddressJsonArray['lastName'],
             $billingAddressJsonArray['street'],
@@ -127,6 +128,7 @@ class ConvertimOrderDataFactory
     public function createConvertimCustomerDeliveryAddressDataFromJsonArray($deliveryAddressJsonArray)
     {
         return new ConvertimCustomerDeliveryAddressData(
+            $deliveryAddressJsonArray['uuid'],
             $deliveryAddressJsonArray['name'],
             $deliveryAddressJsonArray['lastName'],
             $deliveryAddressJsonArray['street'],

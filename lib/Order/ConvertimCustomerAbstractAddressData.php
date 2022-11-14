@@ -7,6 +7,11 @@ abstract class ConvertimCustomerAbstractAddressData
     /**
      * @var string|null
      */
+    protected $uuid;
+
+    /**
+     * @var string|null
+     */
     protected $name;
 
     /**
@@ -35,6 +40,7 @@ abstract class ConvertimCustomerAbstractAddressData
     protected $country;
 
     /**
+     * @param string|null $uuid
      * @param string|null $name
      * @param string|null $lastName
      * @param string|null $street
@@ -43,6 +49,7 @@ abstract class ConvertimCustomerAbstractAddressData
      * @param string|null $country
      */
     public function __construct(
+        $uuid = null,
         $name = null,
         $lastName = null,
         $street = null,
@@ -56,6 +63,14 @@ abstract class ConvertimCustomerAbstractAddressData
         $this->city = $city;
         $this->postCode = $postCode;
         $this->country = $country;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUuid()
+    {
+        return $this->uuid;
     }
 
     /**
