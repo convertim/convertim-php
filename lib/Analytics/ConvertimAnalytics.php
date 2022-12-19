@@ -43,6 +43,18 @@ class ConvertimAnalytics
     }
 
     /**
+     * @param \Convertim\Analytics\V2\ConvertimBaseAnalyticsData $convertimAnalyticsData
+     */
+    public function collectV2($convertimAnalyticsData)
+    {
+        try {
+            $this->getApiClient()->doRequest($convertimAnalyticsData);
+        } catch (GuzzleException $ex) {
+        } catch (\Exception $e) {
+        }
+    }
+
+    /**
      * @return boolean
      */
     public function isProductionMode()
