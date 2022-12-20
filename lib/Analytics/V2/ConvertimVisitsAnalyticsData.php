@@ -5,9 +5,17 @@ namespace Convertim\Analytics\V2;
 class ConvertimVisitsAnalyticsData extends ConvertimBaseAnalyticsData implements \JsonSerializable
 {
 
+    const TYPE_VISIT = 'visit';
     const CONVERTIM_ORIGINAL_OPEN_TYPE = 'click';
 
+    /**
+     * @var string
+     */
     private $ipAddress;
+
+    /**
+     * @var string
+     */
     private $userAgent;
 
     /**
@@ -19,7 +27,7 @@ class ConvertimVisitsAnalyticsData extends ConvertimBaseAnalyticsData implements
      */
     public function __construct($uuid, $customerDeviceUuid, $device, $eshop, $customerHash, $ipAddress, $userAgent)
     {
-        parent::__construct($uuid, $customerDeviceUuid, $device, $eshop, $customerHash);
+        parent::__construct(self::TYPE_VISIT, $uuid, $customerDeviceUuid, $device, $eshop, $customerHash);
 
         $this->ipAddress = $ipAddress;
         $this->userAgent = $userAgent;

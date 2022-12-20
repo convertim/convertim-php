@@ -28,6 +28,7 @@ class ConvertimOrderAnalyticsDataTest extends TestCase
             json_encode($convertimAnalyticsData),
             json_encode([
                 'uuid' => 'rowUuid',
+                'type' => 'order',
                 'customerDeviceUuid' => 'customerDeviceUuid',
                 'variant' => 'original',
                 'device' => 'DEVICE',

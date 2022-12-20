@@ -10,6 +10,11 @@ abstract class ConvertimBaseAnalyticsData implements \JsonSerializable
     /**
      * @var string
      */
+    private $type;
+
+    /**
+     * @var string
+     */
     private $uuid;
 
     /**
@@ -39,8 +44,9 @@ abstract class ConvertimBaseAnalyticsData implements \JsonSerializable
      * @param string $eshop
      * @param string $customerHash
      */
-    public function __construct($uuid, $customerDeviceUuid, $device, $eshop, $customerHash)
+    public function __construct($type, $uuid, $customerDeviceUuid, $device, $eshop, $customerHash)
     {
+        $this->type = $type;
         $this->uuid = $uuid;
         $this->customerDeviceUuid = $customerDeviceUuid;
         $this->device = $device;
@@ -51,6 +57,7 @@ abstract class ConvertimBaseAnalyticsData implements \JsonSerializable
     public function jsonSerialize()
     {
         return [
+            'type' => $this->type,
             'uuid' => $this->uuid,
             'customerDeviceUuid' => $this->customerDeviceUuid,
             'variant' => self::CONVERTIM_VARIANT,

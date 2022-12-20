@@ -24,6 +24,7 @@ class ConvertimVisitAnalyticsDataTest extends TestCase
             json_encode($convertimAnalyticsData),
             json_encode([
                 'uuid' => 'rowUuid',
+                'type' => 'visit',
                 'customerDeviceUuid' => 'customerDeviceUuid',
                 'variant' => 'original',
                 'device' => 'DEVICE',

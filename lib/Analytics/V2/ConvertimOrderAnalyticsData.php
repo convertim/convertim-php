@@ -4,6 +4,9 @@ namespace Convertim\Analytics\V2;
 
 class ConvertimOrderAnalyticsData extends ConvertimBaseAnalyticsData implements \JsonSerializable
 {
+
+    const TYPE_ORDER = 'order';
+
     /**
      * @var string
      */
@@ -55,7 +58,7 @@ class ConvertimOrderAnalyticsData extends ConvertimBaseAnalyticsData implements 
      */
     public function __construct($uuid, $customerDeviceUuid, $device, $eshop, $customerHash, $orderUuid, $totalCustomersCountOfOrders, $orderPriceWithVat, $orderPriceWithoutVat, $itemCount, $transportPrice, $paymentPrice)
     {
-        parent::__construct($uuid, $customerDeviceUuid, $device, $eshop, $customerHash);
+        parent::__construct(self::TYPE_ORDER, $uuid, $customerDeviceUuid, $device, $eshop, $customerHash);
 
         $this->orderUuid = $orderUuid;
         $this->totalCustomersCountOfOrders = $totalCustomersCountOfOrders;
