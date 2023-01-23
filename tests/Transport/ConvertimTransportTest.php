@@ -42,6 +42,7 @@ class ConvertimTransportTest extends TestCase
                 'services' => [],
                 'transportInstruction' => 'Instruction',
                 'deliveryTime' => 'Tomorrow',
+                'exceedLimit' => false,
             ])
         );
     }
