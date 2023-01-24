@@ -57,6 +57,11 @@ class ConvertimOrderDataFactory
             $registerToEshop = $orderJsonArray['header']['registerToEshop'];
         }
 
+        $browserInfoData = [];
+        if (array_key_exists('browserInfo', $orderJsonArray)) {
+            $cartExtraData = $orderJsonArray['browserInfo'];
+        }
+
         return new ConvertimOrderData(
             $orderJsonArray['header']['uuid'],
             $orderJsonArray['header']['comment'],
@@ -71,7 +76,8 @@ class ConvertimOrderDataFactory
             $registerToNewsletter,
             $registerToEshop,
             $cartExtraData,
-            $paypalData
+            $paypalData,
+            $browserInfoData
         );
     }
 
