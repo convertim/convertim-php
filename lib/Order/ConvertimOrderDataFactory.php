@@ -59,7 +59,7 @@ class ConvertimOrderDataFactory
 
         $browserInfoData = [];
         if (array_key_exists('browserInfo', $orderJsonArray)) {
-            $cartExtraData = $orderJsonArray['browserInfo'];
+            $browserInfoData = $orderJsonArray['browserInfo'];
         }
 
         return new ConvertimOrderData(
