@@ -35,17 +35,17 @@ class ApiClient
 
     /**
      * @param $convertimAnalyticsData
-     * @return \GuzzleHttp\Psr7\Response
-     * @throws \Convertim\Analytics\Exceptions\ConnectionErrorException|\GuzzleHttp\Exception\GuzzleException
+     * @return \GuzzleHttp\Message\ResponseInterface
+     * @throws \Convertim\Analytics\Exceptions\ConnectionErrorException|\GuzzleHttp\
      */
     public function doRequest($convertimAnalyticsData)
     {
-        $options['base_uri'] = $this->isProductionMode ? self::CONVERTIM_BASE_URI_PRODUCTION : self::CONVERTIM_BASE_URI_DEVEL;
+        $baseUri = $this->isProductionMode ? self::CONVERTIM_BASE_URI_PRODUCTION : self::CONVERTIM_BASE_URI_DEVEL;
         $options['headers'][self::CONVERTIM_AUTH_HEADER_NAME] = self::CONVERTIM_AUTH_HEADER;
         $options['json'] = $convertimAnalyticsData;
 
         try {
-            return $this->client->request('POST', 'analytics', $options);
+            return $this->client->post($baseUri . '/analytics', $options);
         } catch (RequestException $e) {
             throw new ConnectionErrorException();
         }
