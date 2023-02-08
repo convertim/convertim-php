@@ -62,6 +62,11 @@ class ConvertimOrderDataFactory
             $browserInfoData = $orderJsonArray['browserInfo'];
         }
 
+        $paymentStatus = null;
+        if (array_key_exists('paymentStatus', $orderJsonArray) && $orderJsonArray['paymentStatus'] !== null) {
+            $paymentStatus = $this->createConvertimOrderPaymentStatusFromJsonArray($orderJsonArray['paymentStatus']);
+        }
+
         return new ConvertimOrderData(
             $orderJsonArray['header']['uuid'],
             $orderJsonArray['header']['comment'],
@@ -77,7 +82,8 @@ class ConvertimOrderDataFactory
             $registerToEshop,
             $cartExtraData,
             $paypalData,
-            $browserInfoData
+            $browserInfoData,
+            $paymentStatus
         );
     }
 
@@ -287,5 +293,19 @@ class ConvertimOrderDataFactory
     public function createConvertimOrderTransportServiceDataFromJsonArray($transportServiceJsonArray)
     {
         return new ConvertimOrderTransportServiceData();
+    }
+
+    /**
+     * @param array $paymentStatusJsonArray
+     * @return \Convertim\Order\ConvertimOrderDataPaymentStatus
+     */
+    private function createConvertimOrderPaymentStatusFromJsonArray($paymentStatusJsonArray)
+    {
+        return new ConvertimOrderDataPaymentStatus(
+            $paymentStatusJsonArray['paymentProvider'],
+            $paymentStatusJsonArray['paymentProviderId'],
+            $paymentStatusJsonArray['status'],
+            $paymentStatusJsonArray['isPaid']
+        );
     }
 }

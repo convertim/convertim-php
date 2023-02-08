@@ -80,6 +80,11 @@ class ConvertimOrderData
     private $browserInfo;
 
     /**
+     * @var \Convertim\Order\ConvertimOrderDataPaymentStatus|null
+     */
+    private $paymentStatus;
+
+    /**
      * @param string $uuid
      * @param string|null $note
      * @param bool $disallowHeurekaVerifiedByCustomers
@@ -95,6 +100,7 @@ class ConvertimOrderData
      * @param array $cartExtraData
      * @param \Convertim\Order\ConvertimOrderPaypalData|null $paypalData
      * @param array $browserInfo
+     * @param \Convertim\Order\ConvertimOrderDataPaymentStatus|null $paymentStatus
      */
     public function __construct(
         $uuid,
@@ -111,7 +117,8 @@ class ConvertimOrderData
         $registerToEshop = false,
         $cartExtraData = [],
         $paypalData = null,
-        $browserInfo = []
+        $browserInfo = [],
+        $paymentStatus = null
     ) {
         $this->uuid = $uuid;
         $this->note = $note;
@@ -128,6 +135,7 @@ class ConvertimOrderData
         $this->cartExtraData = $cartExtraData;
         $this->paypalData = $paypalData;
         $this->browserInfo = $browserInfo;
+        $this->paymentStatus = $paymentStatus;
     }
 
     /**
@@ -256,5 +264,13 @@ class ConvertimOrderData
     public function getBrowserInfo()
     {
         return $this->browserInfo;
+    }
+
+    /**
+     * @return \Convertim\Order\ConvertimOrderDataPaymentStatus|null
+     */
+    public function getPaymentStatus()
+    {
+        return $this->paymentStatus;
     }
 }
