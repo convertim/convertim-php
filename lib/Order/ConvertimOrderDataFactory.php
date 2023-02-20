@@ -67,6 +67,11 @@ class ConvertimOrderDataFactory
             $paymentStatus = $this->createConvertimOrderPaymentStatusFromJsonArray($orderJsonArray['paymentStatus']);
         }
 
+        $stripeData = null;
+        if (array_key_exists('stripe', $orderJsonArray) && $orderJsonArray['stripe'] !== null) {
+            $stripeData = $this->createConvertimOrderStripeDataFromJsonArray($orderJsonArray['stripe']);
+        }
+
         return new ConvertimOrderData(
             $orderJsonArray['header']['uuid'],
             $orderJsonArray['header']['comment'],
@@ -83,7 +88,8 @@ class ConvertimOrderDataFactory
             $cartExtraData,
             $paypalData,
             $browserInfoData,
-            $paymentStatus
+            $paymentStatus,
+            $stripeData
         );
     }
 
@@ -306,6 +312,20 @@ class ConvertimOrderDataFactory
             $paymentStatusJsonArray['paymentProviderId'],
             $paymentStatusJsonArray['status'],
             $paymentStatusJsonArray['isPaid']
+        );
+    }
+
+    /**
+     * @param array $stripeJsonArray
+     * @return \Convertim\Order\ConvertimOrderStripeData
+     */
+    private function createConvertimOrderStripeDataFromJsonArray($stripeJsonArray)
+    {
+        return new ConvertimOrderStripeData(
+            $stripeJsonArray['id'],
+            $stripeJsonArray['prevPrice'],
+            $stripeJsonArray['clientSecret'],
+            $stripeJsonArray['status']
         );
     }
 }
