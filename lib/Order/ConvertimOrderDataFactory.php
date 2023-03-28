@@ -343,11 +343,8 @@ class ConvertimOrderDataFactory
     {
         return new ConvertimOrderComgateData(
             $comgateJsonArray['transId'],
-            \DateTime::createFromFormat('Y-m-d H:i:s', $comgateJsonArray['createdAt']),
-            $comgateJsonArray['status'],
-            $comgateJsonArray['fik'],
-            $comgateJsonArray['bkp'],
-            $comgateJsonArray['pkp']
+            $comgateJsonArray['state'],
+            $comgateJsonArray
         );
     }
 }

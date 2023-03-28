@@ -20,36 +20,20 @@ class ConvertimOrderComgateData
     public $status;
 
     /**
-     * @var string|null
+     * @var object|null
      */
-    public $fik;
-
-    /**
-     * @var string|null
-     */
-    public $bkp;
-
-    /**
-     * @var string|null
-     */
-    public $pkp;
+    public $other;
 
     /**
      * @param string $transactionId
-     * @param \DateTime $createdAt
      * @param string $status
-     * @param string|null $fik
-     * @param string|null $bkp
-     * @param string|null $pkp
+     * @param object|null $other
      */
-    public function __construct($transactionId, $createdAt, $status, $fik = null, $bkp = null, $pkp = null)
+    public function __construct($transactionId, $status, $other = null)
     {
         $this->transactionId = $transactionId;
-        $this->createdAt = $createdAt;
         $this->status = $status;
-        $this->fik = $fik;
-        $this->bkp = $bkp;
-        $this->pkp = $pkp;
+        $this->other = $other;
     }
 
     /**
@@ -77,26 +61,10 @@ class ConvertimOrderComgateData
     }
 
     /**
-     * @return string|null
+     * @return object|null
      */
-    public function getFik()
+    public function getOther()
     {
-        return $this->fik;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getBkp()
-    {
-        return $this->bkp;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPkp()
-    {
-        return $this->pkp;
+        return $this->other;
     }
 }
