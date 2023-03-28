@@ -72,6 +72,11 @@ class ConvertimOrderDataFactory
             $stripeData = $this->createConvertimOrderStripeDataFromJsonArray($orderJsonArray['stripe']);
         }
 
+        $comgateData = null;
+        if (array_key_exists('comgate', $orderJsonArray) && $orderJsonArray['comgate'] !== null) {
+            $comgateData = $this->createConvertimOrderComgateDataFromJsonArray($orderJsonArray['comgate']);
+        }
+
         return new ConvertimOrderData(
             $orderJsonArray['header']['uuid'],
             $orderJsonArray['header']['comment'],
@@ -89,7 +94,8 @@ class ConvertimOrderDataFactory
             $paypalData,
             $browserInfoData,
             $paymentStatus,
-            $stripeData
+            $stripeData,
+            $comgateData
         );
     }
 
@@ -326,6 +332,22 @@ class ConvertimOrderDataFactory
             $stripeJsonArray['prevPrice'],
             $stripeJsonArray['clientSecret'],
             $stripeJsonArray['status']
+        );
+    }
+
+    /**
+     * @param array $comgateJsonArray
+     * @return \Convertim\Order\ConvertimOrderComgateData
+     */
+    private function createConvertimOrderComgateDataFromJsonArray($comgateJsonArray)
+    {
+        return new ConvertimOrderComgateData(
+            $comgateJsonArray['transId'],
+            \DateTime::createFromFormat('Y-m-d H:i:s', $comgateJsonArray['createdAt']),
+            $comgateJsonArray['status'],
+            $comgateJsonArray['fik'],
+            $comgateJsonArray['bkp'],
+            $comgateJsonArray['pkp']
         );
     }
 }

@@ -15,4 +15,6 @@ class ConvertimPaymentType
     const CONVERTIM_PAYMENT_TYPE_BANK_TRANSFER_WITH_QR = 'bankTransfer';
 
     const CONVERTIM_PAYMENT_TYPE_STRIPE = 'stripe';
+
+    const CONVERTIM_PAYMENT_TYPE_COMGATE = 'comgate';
 }
