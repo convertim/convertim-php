@@ -25,17 +25,31 @@ class ConvertimSaveOrderResponse implements \JsonSerializable
     private $orderNotPaidUrl;
 
     /**
+     * @var string|null
+     */
+    private $orderPaidUrl;
+
+    /**
+     * @var string|null
+     */
+    private $orderRedirectUrl;
+
+    /**
      * @param string $internalOrderId
      * @param string $orderNumber
      * @param string|null $orderHash
      * @param string|null $orderNotPaidUrl
+     * @param string|null $orderPaidUrl
+     * @param string|null $orderRedirectUrl
      */
-    public function __construct($internalOrderId, $orderNumber, $orderHash, $orderNotPaidUrl)
+    public function __construct($internalOrderId, $orderNumber, $orderHash = null, $orderNotPaidUrl = null, $orderPaidUrl = null, $orderRedirectUrl = null)
     {
         $this->internalOrderId = $internalOrderId;
         $this->orderNumber = $orderNumber;
         $this->orderHash = $orderHash;
         $this->orderNotPaidUrl = $orderNotPaidUrl;
+        $this->orderPaidUrl = $orderPaidUrl;
+        $this->orderRedirectUrl = $orderRedirectUrl;
     }
 
 
@@ -46,6 +60,8 @@ class ConvertimSaveOrderResponse implements \JsonSerializable
             'orderNumber' => $this->orderNumber,
             'orderHash' => $this->orderHash,
             'orderNotPaidUrl' => $this->orderNotPaidUrl,
+            'orderPaidUrl' => $this->orderPaidUrl,
+            'orderRedirectUrl' => $this->orderRedirectUrl,
         ];
     }
 }
