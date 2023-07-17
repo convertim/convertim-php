@@ -205,7 +205,8 @@ class ConvertimOrderDataFactory
             $selectedPickupPlace['street'],
             $selectedPickupPlace['city'],
             $selectedPickupPlace['postcode'],
-            $selectedPickupPlace['country']
+            $selectedPickupPlace['country'],
+            array_key_exists('currency', $selectedPickupPlace) ? $selectedPickupPlace['currency'] : null
         );
     }
 

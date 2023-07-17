@@ -35,12 +35,18 @@ class ConvertimOrderTransportExtraData
     private $pickupPointCountryCode;
 
     /**
+     * @var string|null
+     */
+    private $transportCurrency;
+
+    /**
      * @param string|null $pickUpPointCode
      * @param string|null $pickupPointName
      * @param string|null $pickupPointStreet
      * @param string|null $pickupPointCity
      * @param string|null $pickupPointPostCode
      * @param string|null $pickupPointCountryCode
+     * @param string|null $transportCurrency
      */
     public function __construct(
         $pickUpPointCode,
@@ -48,7 +54,8 @@ class ConvertimOrderTransportExtraData
         $pickupPointStreet,
         $pickupPointCity,
         $pickupPointPostCode,
-        $pickupPointCountryCode
+        $pickupPointCountryCode,
+        $transportCurrency = null
     ) {
         $this->pickUpPointCode = $pickUpPointCode;
         $this->pickupPointName = $pickupPointName;
@@ -56,6 +63,7 @@ class ConvertimOrderTransportExtraData
         $this->pickupPointCity = $pickupPointCity;
         $this->pickupPointPostCode = $pickupPointPostCode;
         $this->pickupPointCountryCode = $pickupPointCountryCode;
+        $this->transportCurrency = $transportCurrency;
     }
 
     /**
@@ -104,5 +112,13 @@ class ConvertimOrderTransportExtraData
     public function getPickupPointCountryCode()
     {
         return $this->pickupPointCountryCode;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTransportCurrency()
+    {
+        return $this->transportCurrency;
     }
 }
