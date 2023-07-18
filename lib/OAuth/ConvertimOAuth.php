@@ -2,7 +2,6 @@
 
 namespace Convertim\OAuth;
 
-use Convertim\Analytics\ApiClient;
 use Convertim\OAuth\Exceptions\ConvertimOauthBatResponseException;
 use GuzzleHttp\Client;
 

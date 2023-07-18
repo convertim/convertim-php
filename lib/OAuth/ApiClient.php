@@ -47,7 +47,10 @@ class ApiClient
         $options['base_uri'] = $this->isProductionMode ? self::CONVERTIM_BASE_URI_PRODUCTION : self::CONVERTIM_BASE_URI_DEVEL;
         $options['headers'][self::AUTH_HEADER_NAME] = sprintf('BASIC %s', base64_encode($clientId . ':' . $clientSecret));
         $options['headers'][self::CONVERTIM_AUTH_HEADER_NAME] = self::CONVERTIM_AUTH_HEADER;
-        $options['query'] = ['authCode' => $authCode];
+        $options['query'] = [
+            'path' => 'token',
+            'authCode' => $authCode,
+        ];
 
         try {
             return $this->client->request('POST', 'oauth', $options);
