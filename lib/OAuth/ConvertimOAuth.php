@@ -36,7 +36,7 @@ class ConvertimOAuth
         $apiResponse = $this->getApiClient()->doRequest($this->options['clientId'], $this->options['clientSecret'], $authCode);
 
         try {
-            $apiResponseJson = json_decode($apiResponse);
+            $apiResponseJson = json_decode($apiResponse->getBody(), true);
             if (isset($apiResponseJson['token'])) {
                 return $apiResponseJson['token'];
             }
