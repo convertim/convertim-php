@@ -10,6 +10,9 @@ class ConvertimOAuth
 {
     const OPTION_IS_PRODUCTION_MODE = 'isProductionMode';
 
+    const OPTION_CLIENT_ID = 'clientId';
+    const OPTION_CLIENT_SECRET = 'clientSecret';
+
     /**
      * @var \Convertim\OAuth\ApiClient
      */
