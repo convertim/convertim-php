@@ -11,7 +11,8 @@
   "require": {
     "php": ">=5.6.0",
     "ext-json": "*",
-    "guzzlehttp/guzzle": "^6.5"
+    "guzzlehttp/guzzle": "^6.5",
+    "lcobucci/jwt": "^4.3"
   },
   "require-dev": {
     "phing/phing": "2.*",
