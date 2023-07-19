@@ -57,7 +57,8 @@ class ConvertimOAuth
 
             $stringToken = $apiResponseJson['token'];
             $token = $parser->parse($stringToken);
-            if (! $validator->validate($token, new SignedWith(new Sha256(), InMemory::file('./assets/convertim_oauth.pub')))) {
+
+            if (! $validator->validate($token, new SignedWith(new Sha256(), InMemory::file(__DIR__ . '/../../assets/convertim_oauth.pub')))) {
                 throw new ConvertimOauthBatResponseException('Token is invalid', 0);
             }
 
