@@ -35,12 +35,18 @@ class CustomerDetail implements \JsonSerializable
     private $lastSelectedTransportUuid;
 
     /**
+     * @var \Convertim\Customer\LastSelectedPickupPoint|null
+     */
+    private $lastSelectedPickupPoint;
+
+    /**
      * @param string $email
      * @param string $telephoneNumber
      * @param \Convertim\Customer\DeliveryAddress|null $deliveryAddress
-     * @param \Convertim\Customer\BillingAddress|null  $billingAddress
+     * @param \Convertim\Customer\BillingAddress|null $billingAddress
      * @param string|null $lastSelectedPaymentUuid
      * @param string|null $lastSelectedTransportUuid
+     * @param \Convertim\Customer\LastSelectedPickupPoint|null $lastSelectedPickupPoint
      */
     public function __construct(
         $email,
@@ -48,7 +54,8 @@ class CustomerDetail implements \JsonSerializable
         $deliveryAddress = null,
         $billingAddress = null,
         $lastSelectedPaymentUuid = null,
-        $lastSelectedTransportUuid = null
+        $lastSelectedTransportUuid = null,
+        $lastSelectedPickupPoint = null
     ) {
         $this->email = $email;
         $this->telephoneNumber = $telephoneNumber;
@@ -56,6 +63,7 @@ class CustomerDetail implements \JsonSerializable
         $this->billingAddress = $billingAddress;
         $this->lastSelectedPaymentUuid = $lastSelectedPaymentUuid;
         $this->lastSelectedTransportUuid = $lastSelectedTransportUuid;
+        $this->lastSelectedPickupPoint = $lastSelectedPickupPoint;
     }
 
     /**
@@ -70,6 +78,7 @@ class CustomerDetail implements \JsonSerializable
             'billingAddress' => $this->billingAddress,
             'lastSelectedPaymentUuid' => $this->lastSelectedPaymentUuid,
             'lastSelectedTransportUuid' => $this->lastSelectedTransportUuid,
+            'lastSelectedPickupPoint' => $this->lastSelectedPickupPoint,
         ];
     }
 }

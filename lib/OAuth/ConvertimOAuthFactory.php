@@ -2,7 +2,6 @@
 
 namespace Convertim\OAuth;
 
-
 use Convertim\OAuth\Exceptions\ConvertimOauthBatParameterException;
 
 class ConvertimOAuthFactory
