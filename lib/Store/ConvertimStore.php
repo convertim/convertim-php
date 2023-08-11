@@ -58,6 +58,11 @@ class ConvertimStore implements \JsonSerializable
     private $availability;
 
     /**
+     * @var \Convertim\Store\ProductOnStoreAvailability[]
+     */
+    private $productOnStoreAvailability;
+
+    /**
      * @param string $name
      * @param string $code
      * @param string $latitude
@@ -68,6 +73,7 @@ class ConvertimStore implements \JsonSerializable
      * @param string $city
      * @param \Convertim\Store\ConvertimStoreOpeningHour[] $hours
      * @param string | null $availability
+     * @param \Convertim\Store\ProductOnStoreAvailability[] $productOnStoreAvailability
      */
     public function __construct(
         $name,
@@ -79,7 +85,8 @@ class ConvertimStore implements \JsonSerializable
         $postcode,
         $city,
         array $hours,
-        $availability = null
+        $availability = null,
+        $productOnStoreAvailability = []
     )
     {
         $this->name = $name;
@@ -92,6 +99,7 @@ class ConvertimStore implements \JsonSerializable
         $this->city = $city;
         $this->hours = $hours;
         $this->availability = $availability;
+        $this->productOnStoreAvailability = $productOnStoreAvailability;
     }
 
 
@@ -109,6 +117,7 @@ class ConvertimStore implements \JsonSerializable
             'hours' => $this->hours,
             'source' => ConvertimTransportSources::SOURCE_STORES,
             'availability' => $this->availability,
+            'productOnStoreAvailability' => $this->productOnStoreAvailability,
         ];
     }
 }
