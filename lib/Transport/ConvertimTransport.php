@@ -80,6 +80,11 @@ class ConvertimTransport implements \JsonSerializable
     private $exceedLimit;
 
     /**
+     * @var \Convertim\Transport\ConvertimTransportExpressData
+     */
+    private $convertimTransportExpressData;
+
+    /**
      * @param string $uuid
      * @param string $name
      * @param bool $isShortForm
@@ -95,6 +100,7 @@ class ConvertimTransport implements \JsonSerializable
      * @param string|null $transportInstruction
      * @param string|null $deliveryTime
      * @param bool $exceedLimit
+     * @param \Convertim\Transport\ConvertimTransportExpressData $convertimTransportExpressData
      */
     public function __construct(
         $uuid,
@@ -111,7 +117,8 @@ class ConvertimTransport implements \JsonSerializable
         $services = [],
         $transportInstruction = null,
         $deliveryTime = null,
-        $exceedLimit = false
+        $exceedLimit = false,
+        $convertimTransportExpressData = null
     ) {
         $this->uuid = $uuid;
         $this->name = $name;
@@ -128,6 +135,7 @@ class ConvertimTransport implements \JsonSerializable
         $this->transportInstruction = $transportInstruction;
         $this->deliveryTime = $deliveryTime;
         $this->exceedLimit = $exceedLimit;
+        $this->convertimTransportExpressData = $convertimTransportExpressData;
     }
 
     public function jsonSerialize()
@@ -148,6 +156,7 @@ class ConvertimTransport implements \JsonSerializable
             'transportInstruction' => $this->transportInstruction,
             'deliveryTime' => $this->deliveryTime,
             'exceedLimit' => $this->exceedLimit,
+            'convertimTransportExpressData' => $this->convertimTransportExpressData,
         ];
     }
 }
