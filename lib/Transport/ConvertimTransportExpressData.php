@@ -10,17 +10,25 @@ class ConvertimTransportExpressData implements \JsonSerializable
     private $validZips;
 
     /**
-     * @param string $validZips
+     * @var string
      */
-    public function __construct($validZips)
+    private $validZipsCities;
+
+    /**
+     * @param string $validZips
+     * @param string $validZipsCities
+     */
+    public function __construct($validZips, $validZipsCities)
     {
         $this->validZips = $validZips;
+        $this->validZipsCities = $validZipsCities;
     }
 
     function jsonSerialize()
     {
         return [
             'validZips' => $this->validZips,
+            'validZipsCities' => $this->validZipsCities,
         ];
     }
 }
