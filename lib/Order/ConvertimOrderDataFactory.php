@@ -77,6 +77,11 @@ class ConvertimOrderDataFactory
             $comgateData = $this->createConvertimOrderComgateDataFromJsonArray($orderJsonArray['comgate']);
         }
 
+        $trustPayData = null;
+        if (array_key_exists('trustPay', $orderJsonArray) && $orderJsonArray['trustPay'] !== null) {
+            $trustPayData = $this->createConvertimOrderTrustPayDataFromJsonArray($orderJsonArray['trustPay']);
+        }
+
         return new ConvertimOrderData(
             $orderJsonArray['header']['uuid'],
             $orderJsonArray['header']['comment'],
@@ -95,7 +100,8 @@ class ConvertimOrderDataFactory
             $browserInfoData,
             $paymentStatus,
             $stripeData,
-            $comgateData
+            $comgateData,
+            $trustPayData
         );
     }
 
@@ -346,6 +352,15 @@ class ConvertimOrderDataFactory
             $comgateJsonArray['transId'],
             $comgateJsonArray['state'],
             $comgateJsonArray
+        );
+    }
+
+    private function createConvertimOrderTrustPayDataFromJsonArray($trustPay)
+    {
+        return new ConvertimOrderTrustPayData(
+            $trustPay['PaymentRequestId'],
+            $trustPay['state'],
+            $trustPay['ResultInfo']
         );
     }
 }

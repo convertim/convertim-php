@@ -17,4 +17,6 @@ class ConvertimPaymentType
     const CONVERTIM_PAYMENT_TYPE_STRIPE = 'stripe';
 
     const CONVERTIM_PAYMENT_TYPE_COMGATE = 'comgate';
+
+    const CONVERTIM_PAYMENT_TYPE_TRUST_PAY = 'trustPay';
 }

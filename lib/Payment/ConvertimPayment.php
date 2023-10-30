@@ -76,6 +76,11 @@ class ConvertimPayment implements \JsonSerializable
     private $comgate;
 
     /**
+     * @var \Convertim\Payment\ConvertimTrustPayData|null
+     */
+    private $trustPay;
+
+    /**
      * @param string $uuid
      * @param string $type
      * @param string $name
@@ -87,9 +92,10 @@ class ConvertimPayment implements \JsonSerializable
      * @param \Convertim\Payment\ConvertimAdyenData|null $adyen
      * @param string|null $paymentDescription
      * @param string[] $restrictedTransports
-     * @param string|null $paymentInstruction,
+     * @param string|null $paymentInstruction ,
      * @param \Convertim\Payment\ConvertimStripeData|null $stripe
      * @param \Convertim\Payment\ConvertimComgateData|null $comgate
+     * @param \Convertim\Payment\ConvertimTrustPayData|null $trustPay
      */
     public function __construct(
         $uuid,
@@ -105,7 +111,8 @@ class ConvertimPayment implements \JsonSerializable
         $restrictedTransports = [],
         $paymentInstruction = null,
         $stripe = null,
-        $comgate = null
+        $comgate = null,
+        $trustPay = null
     ) {
         $this->uuid = $uuid;
         $this->type = $type;
@@ -121,6 +128,7 @@ class ConvertimPayment implements \JsonSerializable
         $this->paymentInstruction = $paymentInstruction;
         $this->stripe = $stripe;
         $this->comgate = $comgate;
+        $this->trustPay = $trustPay;
     }
 
     /**
@@ -143,6 +151,7 @@ class ConvertimPayment implements \JsonSerializable
             'paymentInstruction' => $this->paymentInstruction,
             'stripe' => $this->stripe,
             'comgate' => $this->comgate,
+            'trustPay' => $this->trustPay,
         ];
     }
 }

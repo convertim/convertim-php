@@ -95,6 +95,11 @@ class ConvertimOrderData
     private $comgateData;
 
     /**
+     * @var \Convertim\Order\ConvertimOrderTrustPayData|null
+     */
+    private $trustPayData;
+
+    /**
      * @param string $uuid
      * @param string|null $note
      * @param bool $disallowHeurekaVerifiedByCustomers
@@ -113,6 +118,7 @@ class ConvertimOrderData
      * @param \Convertim\Order\ConvertimOrderDataPaymentStatus|null $paymentStatus
      * @param \Convertim\Order\ConvertimOrderStripeData|null $stripeData
      * @param \Convertim\Order\ConvertimOrderComgateData|null $comgateData
+     * @param \Convertim\Order\ConvertimOrderTransportData|null $trustPayData
      */
     public function __construct(
         $uuid,
@@ -132,7 +138,8 @@ class ConvertimOrderData
         $browserInfo = [],
         $paymentStatus = null,
         $stripeData = null,
-        $comgateData = null
+        $comgateData = null,
+        $trustPayData = null
     ) {
         $this->uuid = $uuid;
         $this->note = $note;
@@ -152,6 +159,7 @@ class ConvertimOrderData
         $this->paymentStatus = $paymentStatus;
         $this->stripeData = $stripeData;
         $this->comgateData = $comgateData;
+        $this->trustPayData = $trustPayData;
     }
 
     /**
@@ -304,5 +312,13 @@ class ConvertimOrderData
     public function getComgateData()
     {
         return $this->comgateData;
+    }
+
+    /**
+     * @return \Convertim\Order\ConvertimOrderTransportData|\Convertim\Order\ConvertimOrderTrustPayData|null
+     */
+    public function getTrustPayData()
+    {
+        return $this->trustPayData;
     }
 }
