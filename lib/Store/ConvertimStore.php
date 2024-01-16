@@ -87,8 +87,7 @@ class ConvertimStore implements \JsonSerializable
         array $hours,
         $availability = null,
         $productOnStoreAvailability = []
-    )
-    {
+    ) {
         $this->name = $name;
         $this->code = $code;
         $this->latitude = $latitude;

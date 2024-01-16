@@ -43,6 +43,8 @@ class ConvertimTransportTest extends TestCase
                 'transportInstruction' => 'Instruction',
                 'deliveryTime' => 'Tomorrow',
                 'exceedLimit' => false,
+                'convertimTransportExpressData' => null,
+                'groupDescription' => null,
             ])
         );
     }

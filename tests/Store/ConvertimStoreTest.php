@@ -32,6 +32,8 @@ class ConvertimStoreTest extends TestCase
                 'city' => 'Prague',
                 'source' => 'stores',
                 'hours' => [],
+                'availability' => null,
+                'productOnStoreAvailability' => [],
             ])
         );
     }
