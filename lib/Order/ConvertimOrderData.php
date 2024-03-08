@@ -100,6 +100,16 @@ class ConvertimOrderData
     private $trustPayData;
 
     /**
+     * @var \Convertim\Order\ConvertimOrderViesResultData|null
+     */
+    private $viesResultData;
+
+    /**
+     * @var boolean
+     */
+    private $usePriceWithoutVat;
+
+    /**
      * @param string $uuid
      * @param string|null $note
      * @param bool $disallowHeurekaVerifiedByCustomers
@@ -119,6 +129,8 @@ class ConvertimOrderData
      * @param \Convertim\Order\ConvertimOrderStripeData|null $stripeData
      * @param \Convertim\Order\ConvertimOrderComgateData|null $comgateData
      * @param \Convertim\Order\ConvertimOrderTransportData|null $trustPayData
+     * @param \Convertim\Order\ConvertimOrderViesResultData|null $viesResult
+     * @param bool $usePriceWithoutVat
      */
     public function __construct(
         $uuid,
@@ -139,7 +151,10 @@ class ConvertimOrderData
         $paymentStatus = null,
         $stripeData = null,
         $comgateData = null,
-        $trustPayData = null
+        $trustPayData = null,
+        $viesResultData = null,
+        $usePriceWithoutVat = false
+
     ) {
         $this->uuid = $uuid;
         $this->note = $note;
@@ -160,6 +175,8 @@ class ConvertimOrderData
         $this->stripeData = $stripeData;
         $this->comgateData = $comgateData;
         $this->trustPayData = $trustPayData;
+        $this->viesResultData = $viesResultData;
+        $this->usePriceWithoutVat = $usePriceWithoutVat;
     }
 
     /**
@@ -320,5 +337,21 @@ class ConvertimOrderData
     public function getTrustPayData()
     {
         return $this->trustPayData;
+    }
+
+    /**
+     * @return \Convertim\Order\ConvertimOrderViesResultData|mixed|null
+     */
+    public function getViesResultData()
+    {
+        return $this->viesResultData;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUsePriceWithoutVat()
+    {
+        return $this->usePriceWithoutVat;
     }
 }

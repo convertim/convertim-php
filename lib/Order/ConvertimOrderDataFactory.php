@@ -82,6 +82,11 @@ class ConvertimOrderDataFactory
             $trustPayData = $this->createConvertimOrderTrustPayDataFromJsonArray($orderJsonArray['trustPay']);
         }
 
+        $viesResultData = null;
+        if (array_key_exists('viesResult', $orderJsonArray['header']) && $orderJsonArray['header']['viesResult'] !== null) {
+            $viesResultData = $this->createConvertimOrderViesResultDataFromJsonArray($orderJsonArray['header']['viesResult']);
+        }
+
         return new ConvertimOrderData(
             $orderJsonArray['header']['uuid'],
             $orderJsonArray['header']['comment'],
@@ -101,7 +106,9 @@ class ConvertimOrderDataFactory
             $paymentStatus,
             $stripeData,
             $comgateData,
-            $trustPayData
+            $trustPayData,
+            $viesResultData,
+            $orderJsonArray['header']['usePriceWithoutVat']
         );
     }
 
@@ -355,12 +362,34 @@ class ConvertimOrderDataFactory
         );
     }
 
+    /**
+     * @param $trustPay
+     * @return \Convertim\Order\ConvertimOrderTrustPayData
+     */
     private function createConvertimOrderTrustPayDataFromJsonArray($trustPay)
     {
         return new ConvertimOrderTrustPayData(
             $trustPay['PaymentRequestId'],
             $trustPay['state'],
             $trustPay['ResultInfo']
+        );
+    }
+
+    /**
+     * @param $viesResult
+     * @return \Convertim\Order\ConvertimOrderViesResultData
+     */
+    private function createConvertimOrderViesResultDataFromJsonArray($viesResult)
+    {
+        return new ConvertimOrderViesResultData(
+            $viesResult['isValid'],
+            new \DateTime($viesResult['requestDate']),
+            $viesResult['userError'],
+            $viesResult['name'],
+            $viesResult['address'],
+            $viesResult['requestIdentifier'],
+            $viesResult['originalVatNumber'],
+            $viesResult['vatNumber']
         );
     }
 }
