@@ -83,7 +83,7 @@ class ConvertimOrderDataFactory
         }
 
         $viesResultData = null;
-        if (array_key_exists('viesResult', $orderJsonArray['header']) && $orderJsonArray['header']['viesResult'] !== null) {
+        if (array_key_exists('viesResult', $orderJsonArray['header']) && $orderJsonArray['header']['viesResult'] !== null && count($orderJsonArray['header']['viesResult']) > 0) {
             $viesResultData = $this->createConvertimOrderViesResultDataFromJsonArray($orderJsonArray['header']['viesResult']);
         }
 
