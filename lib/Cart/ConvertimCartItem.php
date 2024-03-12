@@ -45,7 +45,7 @@ class ConvertimCartItem implements \JsonSerializable
     private $gtm;
 
     /**
-     * @var \Convertim\Cart\ConvertimCartItemDiscount
+     * @var \Convertim\Cart\ConvertimCartItemDiscount[]|\Convertim\Cart\ConvertimCartItemDiscountWithVatSplit[]
      */
     private $discounts;
 
@@ -78,7 +78,7 @@ class ConvertimCartItem implements \JsonSerializable
      * @param string $vat
      * @param string $image
      * @param string[] $gtm
-     * @param \Convertim\Cart\ConvertimCartItemDiscount[] $discounts
+     * @param \Convertim\Cart\ConvertimCartItemDiscount[]|\Convertim\Cart\ConvertimCartItemDiscountWithVatSplit[] $discounts
      * @param \Convertim\Cart\ConvertimCartItemAdditional[] $additional
      * @param string[] $labels
      * @param array $extra
@@ -114,6 +114,25 @@ class ConvertimCartItem implements \JsonSerializable
         $this->availability = $availability;
     }
 
+    private function serializeDiscount() {
+        return array_reduce(
+            $this->discounts,
+            function ($transformedDiscount, $item) {
+                if ($item instanceof ConvertimCartItemDiscount) {
+                    $transformedDiscount[$item->getCode()] = $item->getDiscount();
+                } else if ($item instanceof ConvertimCartItemDiscountWithVatSplit) {
+                    $transformedDiscount[$item->getCode()] = [
+                        'withVat' => $item->getDiscountWithVat(),
+                        'withoutVat' => $item->getDiscountWithoutVat(),
+                    ];
+                }
+
+                return $transformedDiscount;
+            },
+            []
+        );
+    }
+
     /**
      * @return array
      */
@@ -128,15 +147,7 @@ class ConvertimCartItem implements \JsonSerializable
             'vat' => $this->vat,
             'image' => $this->image,
             'gtm' => $this->gtm,
-            'discounts' => array_reduce(
-                $this->discounts,
-                function ($transformedDiscount, $item) {
-                    $transformedDiscount[$item->getCode()] = $item->getDiscount();
-
-                    return $transformedDiscount;
-                },
-                []
-            ),
+            'discounts' => $this->serializeDiscount(),
             'additional' => $this->additional,
             'labels' => $this->labels,
             'extra' => $this->extra,
