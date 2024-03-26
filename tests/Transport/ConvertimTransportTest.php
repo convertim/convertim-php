@@ -45,6 +45,7 @@ class ConvertimTransportTest extends TestCase
                 'exceedLimit' => false,
                 'convertimTransportExpressData' => null,
                 'groupDescription' => null,
+                'calculatedDeliveryTime' => null,
             ])
         );
     }

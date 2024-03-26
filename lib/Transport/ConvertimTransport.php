@@ -72,7 +72,7 @@ class ConvertimTransport implements \JsonSerializable
     /**
      * @var string|null
      */
-    private $deliveryTime;
+    private $readableDeliveryTime;
 
     /**
      * @var bool
@@ -90,6 +90,11 @@ class ConvertimTransport implements \JsonSerializable
     private $groupDescription;
 
     /**
+     * @var string|null
+     */
+    private $calculatedDeliveryTime;
+
+    /**
      * @param string $uuid
      * @param string $name
      * @param bool $isShortForm
@@ -103,10 +108,11 @@ class ConvertimTransport implements \JsonSerializable
      * @param string|null $group
      * @param string[] $services
      * @param string|null $transportInstruction
-     * @param string|null $deliveryTime
+     * @param string|null $readableDeliveryTime
      * @param bool $exceedLimit
-     * @param string|null $groupDescription
      * @param \Convertim\Transport\ConvertimTransportExpressData $convertimTransportExpressData
+     * @param string|null $groupDescription
+     * @param string|null $calculatedDeliveryTime
      */
     public function __construct(
         $uuid,
@@ -122,10 +128,11 @@ class ConvertimTransport implements \JsonSerializable
         $group = null,
         $services = [],
         $transportInstruction = null,
-        $deliveryTime = null,
+        $readableDeliveryTime = null,
         $exceedLimit = false,
         $convertimTransportExpressData = null,
-        $groupDescription = null
+        $groupDescription = null,
+        $calculatedDeliveryTime = null
     ) {
         $this->uuid = $uuid;
         $this->name = $name;
@@ -140,10 +147,11 @@ class ConvertimTransport implements \JsonSerializable
         $this->group = $group;
         $this->services = $services;
         $this->transportInstruction = $transportInstruction;
-        $this->deliveryTime = $deliveryTime;
+        $this->readableDeliveryTime = $readableDeliveryTime;
         $this->exceedLimit = $exceedLimit;
         $this->convertimTransportExpressData = $convertimTransportExpressData;
         $this->groupDescription = $groupDescription;
+        $this->calculatedDeliveryTime = $calculatedDeliveryTime;
     }
 
     public function jsonSerialize()
@@ -162,10 +170,11 @@ class ConvertimTransport implements \JsonSerializable
             'group' => $this->group,
             'services' => $this->services,
             'transportInstruction' => $this->transportInstruction,
-            'deliveryTime' => $this->deliveryTime,
+            'deliveryTime' => $this->readableDeliveryTime,
             'exceedLimit' => $this->exceedLimit,
             'convertimTransportExpressData' => $this->convertimTransportExpressData,
             'groupDescription' => $this->groupDescription,
+            'calculatedDeliveryTime' => $this->calculatedDeliveryTime,
         ];
     }
 }
