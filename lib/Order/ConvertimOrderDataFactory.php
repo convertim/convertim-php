@@ -87,6 +87,11 @@ class ConvertimOrderDataFactory
             $viesResultData = $this->createConvertimOrderViesResultDataFromJsonArray($orderJsonArray['header']['viesResult']);
         }
 
+        $secureCode = null;
+        if (array_key_exists('secureCode', $orderJsonArray['header'])) {
+            $secureCode = $orderJsonArray['header']['secureCode'];
+        }
+
         return new ConvertimOrderData(
             $orderJsonArray['header']['uuid'],
             $orderJsonArray['header']['comment'],
@@ -108,7 +113,8 @@ class ConvertimOrderDataFactory
             $comgateData,
             $trustPayData,
             $viesResultData,
-            $orderJsonArray['header']['usePriceWithoutVat']
+            $orderJsonArray['header']['usePriceWithoutVat'],
+            $secureCode
         );
     }
 

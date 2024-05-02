@@ -114,13 +114,14 @@ class ConvertimCartItem implements \JsonSerializable
         $this->availability = $availability;
     }
 
-    private function serializeDiscount() {
+    private function serializeDiscount()
+    {
         return array_reduce(
             $this->discounts,
             function ($transformedDiscount, $item) {
                 if ($item instanceof ConvertimCartItemDiscount) {
                     $transformedDiscount[$item->getCode()] = $item->getDiscount();
-                } else if ($item instanceof ConvertimCartItemDiscountWithVatSplit) {
+                } elseif ($item instanceof ConvertimCartItemDiscountWithVatSplit) {
                     $transformedDiscount[$item->getCode()] = [
                         'withVat' => $item->getDiscountWithVat(),
                         'withoutVat' => $item->getDiscountWithoutVat(),

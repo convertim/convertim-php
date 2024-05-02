@@ -10,6 +10,11 @@ class ConvertimOrderData
     private $uuid;
 
     /**
+     * @var string|null
+     */
+    private $secureCode;
+
+    /**
      * @var \Convertim\Order\ConvertimCustomerData
      */
     private $customerData;
@@ -131,6 +136,7 @@ class ConvertimOrderData
      * @param \Convertim\Order\ConvertimOrderTransportData|null $trustPayData
      * @param \Convertim\Order\ConvertimOrderViesResultData|null $viesResult
      * @param bool $usePriceWithoutVat
+     * @param string $secureCode
      */
     public function __construct(
         $uuid,
@@ -153,10 +159,11 @@ class ConvertimOrderData
         $comgateData = null,
         $trustPayData = null,
         $viesResultData = null,
-        $usePriceWithoutVat = false
-
+        $usePriceWithoutVat = false,
+        $secureCode = null
     ) {
         $this->uuid = $uuid;
+        $this->secureCode = $secureCode;
         $this->note = $note;
         $this->disallowHeurekaVerifiedByCustomers = $disallowHeurekaVerifiedByCustomers;
         $this->customerData = $customerData;
@@ -185,6 +192,14 @@ class ConvertimOrderData
     public function getUuid()
     {
         return $this->uuid;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSecureCode()
+    {
+        return $this->secureCode;
     }
 
     /**
