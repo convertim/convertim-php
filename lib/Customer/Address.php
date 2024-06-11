@@ -40,6 +40,11 @@ abstract class Address implements \JsonSerializable
     protected $country;
 
     /**
+     * @var \Convertim\Customer\RomaniaData|null
+     */
+    protected $romaniaData;
+
+    /**
      * @param string $uuid
      * @param string $name
      * @param string $lastName
@@ -47,6 +52,7 @@ abstract class Address implements \JsonSerializable
      * @param string|null $city
      * @param string|null $postCode
      * @param string|null $country
+     * @param \Convertim\Customer\RomaniaData|null $romaniaData
      */
     public function __construct(
         $uuid,
@@ -55,7 +61,8 @@ abstract class Address implements \JsonSerializable
         $street = null,
         $city = null,
         $postCode = null,
-        $country = null
+        $country = null,
+        $romaniaData = null
     ) {
         $this->uuid = $uuid;
         $this->name = $name;
@@ -64,6 +71,7 @@ abstract class Address implements \JsonSerializable
         $this->city = $city;
         $this->postCode = $postCode;
         $this->country = $country;
+        $this->romaniaData = $romaniaData;
     }
 
     /**
@@ -79,6 +87,7 @@ abstract class Address implements \JsonSerializable
             'city' => $this->city,
             'postCode' => $this->postCode,
             'country' => $this->country,
+            'romaniaData' => $this->romaniaData,
         ];
     }
 }

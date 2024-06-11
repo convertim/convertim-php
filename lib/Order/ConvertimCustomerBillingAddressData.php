@@ -30,6 +30,7 @@ class ConvertimCustomerBillingAddressData extends ConvertimCustomerAbstractAddre
      * @param string|null $companyName
      * @param string|null $identificationNumber
      * @param string|null $vatNumber
+     * @param \Convertim\Customer\RomaniaData|null $romaniaData
      */
     public function __construct(
         $uuid = null,
@@ -41,9 +42,10 @@ class ConvertimCustomerBillingAddressData extends ConvertimCustomerAbstractAddre
         $country = null,
         $companyName = null,
         $identificationNumber = null,
-        $vatNumber = null
+        $vatNumber = null,
+        $romaniaData = null
     ) {
-        parent::__construct($uuid, $name, $lastName, $street, $city, $postCode, $country);
+        parent::__construct($uuid, $name, $lastName, $street, $city, $postCode, $country, $romaniaData);
 
         $this->companyName = $companyName;
         $this->identificationNumber = $identificationNumber;

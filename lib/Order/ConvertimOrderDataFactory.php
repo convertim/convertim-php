@@ -2,6 +2,8 @@
 
 namespace Convertim\Order;
 
+use Convertim\Customer\RomaniaData;
+
 class ConvertimOrderDataFactory
 {
     /**
@@ -150,6 +152,11 @@ class ConvertimOrderDataFactory
             return null;
         }
 
+        $romaniaData = null;
+        if ($billingAddressJsonArray && in_array('romaniaData', $billingAddressJsonArray)) {
+            $romaniaData = new RomaniaData($billingAddressJsonArray['romaniaData']['judet'], $billingAddressJsonArray['romaniaData']['orase']);
+        }
+
         return new ConvertimCustomerBillingAddressData(
             $billingAddressJsonArray['uuid'],
             $billingAddressJsonArray['name'],
@@ -160,7 +167,8 @@ class ConvertimOrderDataFactory
             $billingAddressJsonArray['country'],
             $billingAddressJsonArray['companyName'],
             $billingAddressJsonArray['identificationNumber'],
-            $billingAddressJsonArray['vatNumber']
+            $billingAddressJsonArray['vatNumber'],
+            $romaniaData
         );
     }
 
@@ -170,6 +178,11 @@ class ConvertimOrderDataFactory
      */
     public function createConvertimCustomerDeliveryAddressDataFromJsonArray($deliveryAddressJsonArray)
     {
+        $romaniaData = null;
+        if ($deliveryAddressJsonArray && in_array('romaniaData', $deliveryAddressJsonArray)) {
+            $romaniaData = new RomaniaData($deliveryAddressJsonArray['romaniaData']['judet'], $deliveryAddressJsonArray['romaniaData']['orase']);
+        }
+
         return new ConvertimCustomerDeliveryAddressData(
             $deliveryAddressJsonArray['uuid'],
             $deliveryAddressJsonArray['name'],
@@ -180,7 +193,8 @@ class ConvertimOrderDataFactory
             $deliveryAddressJsonArray['country'],
             $deliveryAddressJsonArray['companyName'],
             $deliveryAddressJsonArray['carrierPhonePrefix'],
-            $deliveryAddressJsonArray['carrierPhoneNumber']
+            $deliveryAddressJsonArray['carrierPhoneNumber'],
+            $romaniaData
         );
     }
 
