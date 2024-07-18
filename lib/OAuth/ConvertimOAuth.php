@@ -4,7 +4,8 @@ namespace Convertim\OAuth;
 
 use Convertim\OAuth\Exceptions\ConvertimOauthBatResponseException;
 use GuzzleHttp\Client;
-use Lcobucci\JWT\Parser;
+use Lcobucci\JWT\Encoding\JoseEncoder;
+use Lcobucci\JWT\Token\Parser;
 use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Signer\Rsa\Sha256;
 use Lcobucci\JWT\Validation\Constraint\SignedWith;
@@ -49,7 +50,7 @@ class ConvertimOAuth
                 throw new ConvertimOauthBatResponseException('Token was not return in response', 0);
             }
 
-            $parser = new Parser();
+            $parser = new Parser(new JoseEncoder());
             $validator = new Validator();
 
             $stringToken = $apiResponseJson['token'];
