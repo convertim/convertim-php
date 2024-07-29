@@ -15,13 +15,20 @@ class ConvertimGoPayData implements \JsonSerializable
     private $allowedPaymentInstruments;
 
     /**
+     * @var string|null
+     */
+    private $bankSwift;
+
+    /**
      * @param string $defaultPaymentInstruction
      * @param string[] $allowedPaymentInstruments
+     * @param string|null $bankSwift
      */
-    public function __construct($defaultPaymentInstruction, $allowedPaymentInstruments = [])
+    public function __construct($defaultPaymentInstruction, $allowedPaymentInstruments = [], $bankSwift = null)
     {
         $this->defaultPaymentInstruction = $defaultPaymentInstruction;
         $this->allowedPaymentInstruments = $allowedPaymentInstruments;
+        $this->bankSwift = $bankSwift;
     }
 
     /**
@@ -32,6 +39,7 @@ class ConvertimGoPayData implements \JsonSerializable
         return [
             'defaultPaymentInstruction' => $this->defaultPaymentInstruction,
             'allowedPaymentInstruments' => $this->allowedPaymentInstruments,
+            'bankSwift' => $this->bankSwift,
         ];
     }
 }
