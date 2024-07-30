@@ -40,6 +40,7 @@ class ConvertimPaymentTest extends TestCase
                 'stripe' => null,
                 'comgate' => null,
                 'trustPay' => null,
+                'differentPaymentDataForTransports' => [],
             ])
         );
     }
