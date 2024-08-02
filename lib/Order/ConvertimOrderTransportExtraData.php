@@ -12,7 +12,7 @@ class ConvertimOrderTransportExtraData
     /**
      * @var string|null
      */
-    private $pickupPointName;
+    private $pickupPointCompanyName;
 
     /**
      * @var string|null
@@ -45,33 +45,41 @@ class ConvertimOrderTransportExtraData
     private $carrierId;
 
     /**
+     * @var string|null
+     */
+    private $pickupPointPointName;
+
+    /**
      * @param string|null $pickUpPointCode
-     * @param string|null $pickupPointName
+     * @param string|null $pickupPointCompanyName
      * @param string|null $pickupPointStreet
      * @param string|null $pickupPointCity
      * @param string|null $pickupPointPostCode
      * @param string|null $pickupPointCountryCode
      * @param string|null $transportCurrency
      * @param string|int|null $carrierId
+     * @param string|null $pickupPointPointName
      */
     public function __construct(
         $pickUpPointCode,
-        $pickupPointName,
+        $pickupPointCompanyName,
         $pickupPointStreet,
         $pickupPointCity,
         $pickupPointPostCode,
         $pickupPointCountryCode,
         $transportCurrency = null,
-        $carrierId = null
+        $carrierId = null,
+        $pickupPointPointName = null
     ) {
         $this->pickUpPointCode = $pickUpPointCode;
-        $this->pickupPointName = $pickupPointName;
+        $this->pickupPointCompanyName = $pickupPointCompanyName;
         $this->pickupPointStreet = $pickupPointStreet;
         $this->pickupPointCity = $pickupPointCity;
         $this->pickupPointPostCode = $pickupPointPostCode;
         $this->pickupPointCountryCode = $pickupPointCountryCode;
         $this->transportCurrency = $transportCurrency;
         $this->carrierId = $carrierId;
+        $this->pickupPointPointName = $pickupPointPointName;
     }
 
     /**
@@ -83,11 +91,17 @@ class ConvertimOrderTransportExtraData
     }
 
     /**
+     * @deprecated - use getPickupPointCompanyName
      * @return string|null
      */
     public function getPickupPointName()
     {
-        return $this->pickupPointName;
+        return $this->pickupPointCompanyName;
+    }
+
+    public function getPickupPointCompanyName()
+    {
+        return $this->pickupPointCompanyName;
     }
 
     /**
@@ -136,5 +150,13 @@ class ConvertimOrderTransportExtraData
     public function getCarrierId()
     {
         return $this->carrierId;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPickupPointPointName(): ?string
+    {
+        return $this->pickupPointPointName;
     }
 }
