@@ -27,6 +27,11 @@ abstract class ConvertimCustomerAbstractAddressData
     /**
      * @var string|null
      */
+    protected $houseNumber;
+
+    /**
+     * @var string|null
+     */
     protected $city;
 
     /**
@@ -53,6 +58,7 @@ abstract class ConvertimCustomerAbstractAddressData
      * @param string|null $postCode
      * @param string|null $country
      * @param \Convertim\Customer\RomaniaData|null $romaniaData
+     * @param string|null $houseNumber
      */
     public function __construct(
         $uuid = null,
@@ -62,11 +68,13 @@ abstract class ConvertimCustomerAbstractAddressData
         $city = null,
         $postCode = null,
         $country = null,
-        $romaniaData = null
+        $romaniaData = null,
+        $houseNumber = null,
     ) {
         $this->name = $name;
         $this->lastName = $lastName;
         $this->street = $street;
+        $this->houseNumber = $houseNumber;
         $this->city = $city;
         $this->postCode = $postCode;
         $this->country = $country;
@@ -135,5 +143,13 @@ abstract class ConvertimCustomerAbstractAddressData
     public function getRomaniaData()
     {
         return $this->romaniaData;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getHouseNumber()
+    {
+        return $this->houseNumber;
     }
 }

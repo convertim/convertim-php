@@ -157,6 +157,11 @@ class ConvertimOrderDataFactory
             $romaniaData = new RomaniaData($billingAddressJsonArray['romaniaData']['judet'], $billingAddressJsonArray['romaniaData']['orase']);
         }
 
+        $houseNumber = null;
+        if ($billingAddressJsonArray && in_array('houseNumber', $billingAddressJsonArray)) {
+            $houseNumber = $billingAddressJsonArray['houseNumber'];
+        }
+
         return new ConvertimCustomerBillingAddressData(
             $billingAddressJsonArray['uuid'],
             $billingAddressJsonArray['name'],
@@ -168,7 +173,8 @@ class ConvertimOrderDataFactory
             $billingAddressJsonArray['companyName'],
             $billingAddressJsonArray['identificationNumber'],
             $billingAddressJsonArray['vatNumber'],
-            $romaniaData
+            $romaniaData,
+            $houseNumber
         );
     }
 
@@ -183,6 +189,11 @@ class ConvertimOrderDataFactory
             $romaniaData = new RomaniaData($deliveryAddressJsonArray['romaniaData']['judet'], $deliveryAddressJsonArray['romaniaData']['orase']);
         }
 
+        $houseNumber = null;
+        if ($deliveryAddressJsonArray && in_array('houseNumber', $deliveryAddressJsonArray)) {
+            $houseNumber = $deliveryAddressJsonArray['houseNumber'];
+        }
+
         return new ConvertimCustomerDeliveryAddressData(
             $deliveryAddressJsonArray['uuid'],
             $deliveryAddressJsonArray['name'],
@@ -194,7 +205,8 @@ class ConvertimOrderDataFactory
             $deliveryAddressJsonArray['companyName'],
             $deliveryAddressJsonArray['carrierPhonePrefix'],
             $deliveryAddressJsonArray['carrierPhoneNumber'],
-            $romaniaData
+            $romaniaData,
+            $houseNumber
         );
     }
 

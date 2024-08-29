@@ -31,6 +31,7 @@ class BillingAddress extends Address
      * @param string|null $identificationNumber
      * @param string|null $vatNumber
      * @param \Convertim\Customer\RomaniaData|null $romaniaData
+     * @param string|null $houseNumber
      */
     public function __construct(
         $uuid,
@@ -43,9 +44,10 @@ class BillingAddress extends Address
         $companyName = null,
         $identificationNumber = null,
         $vatNumber = null,
-        $romaniaData = null
+        $romaniaData = null,
+        $houseNumber = null
     ) {
-        parent::__construct($uuid, $name, $lastName, $street, $city, $postCode, $country, $romaniaData);
+        parent::__construct($uuid, $name, $lastName, $street, $city, $postCode, $country, $romaniaData, $houseNumber);
 
         $this->companyName = $companyName;
         $this->identificationNumber = $identificationNumber;
