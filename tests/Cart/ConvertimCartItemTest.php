@@ -36,6 +36,7 @@ class ConvertimCartItemTest extends TestCase
                 'labels' => [],
                 'extra' => [],
                 'availability' => null,
+                'loyaltyPoints' => null,
             ])
         );
     }
@@ -97,6 +98,7 @@ class ConvertimCartItemTest extends TestCase
                     'key' => 'value'
                 ],
                 'availability' => 'In Stock',
+                'loyaltyPoints' => null,
             ])
         );
     }
@@ -128,7 +130,8 @@ class ConvertimCartItemTest extends TestCase
             [
                 'key' => 'value',
             ],
-            'In Stock'
+            'In Stock',
+            '30'
         );
 
         $this->assertJsonStringEqualsJsonString(
@@ -171,6 +174,7 @@ class ConvertimCartItemTest extends TestCase
                     'key' => 'value'
                 ],
                 'availability' => 'In Stock',
+                'loyaltyPoints' => '30',
             ])
         );
     }
