@@ -2,6 +2,7 @@
 
 namespace Convertim\Order;
 
+use Convertim\Cart\ConvertimCartItemService;
 use Convertim\Customer\RomaniaData;
 
 class ConvertimOrderDataFactory
@@ -285,8 +286,23 @@ class ConvertimOrderDataFactory
             $orderItemJsonArray['priceWithoutVat'],
             $orderItemJsonArray['priceWithVat'],
             $orderItemJsonArray['vatRate'],
-            $orderItemJsonArray['extra']
+            $orderItemJsonArray['extra'],
+            $orderItemJsonArray['loyaltyPoints'],
+            $this->mapConvertimCartItemServices($orderItemJsonArray['cartItemServices'])
         );
+    }
+
+    private function mapConvertimCartItemServices($cartItemServices)
+    {
+        return array_map(function ($cartItemService) {
+            return new ConvertimCartItemService(
+                $cartItemService['id'],
+                $cartItemService['name'],
+                $cartItemService['priceWithVat'],
+                $cartItemService['priceWithoutVat'],
+                $cartItemService['loyaltyPoints']
+            );
+        }, $cartItemServices);
     }
 
     /**

@@ -136,7 +136,7 @@ class ConvertimCartItemTest extends TestCase
             'In Stock',
             '30',
             [
-                new ConvertimCartItemService('1', 'Prodlouzrena zaruka', '100', '120'),
+                new ConvertimCartItemService('1', 'Prodlouzrena zaruka', '100', '120', '40'),
             ]
         );
 
@@ -187,6 +187,7 @@ class ConvertimCartItemTest extends TestCase
                         'serviceName' => 'Prodlouzrena zaruka',
                         'priceWithoutVat' => '100',
                         'priceWithVat' => '120',
+                        'loyaltyPoints' => '40',
                     ]
                 ],
             ])
