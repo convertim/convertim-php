@@ -4,6 +4,7 @@ use Convertim\Cart\ConvertimCartItem;
 use Convertim\Cart\ConvertimCartItemAdditional;
 use Convertim\Cart\ConvertimCartItemDiscount;
 use Convertim\Cart\ConvertimCartItemDiscountWithVatSplit;
+use Convertim\Cart\ConvertimCartItemService;
 use PHPUnit\Framework\TestCase;
 
 class ConvertimCartItemTest extends TestCase
@@ -37,6 +38,7 @@ class ConvertimCartItemTest extends TestCase
                 'extra' => [],
                 'availability' => null,
                 'loyaltyPoints' => null,
+                'cartItemServices' => [],
             ])
         );
     }
@@ -99,6 +101,7 @@ class ConvertimCartItemTest extends TestCase
                 ],
                 'availability' => 'In Stock',
                 'loyaltyPoints' => null,
+                'cartItemServices' => [],
             ])
         );
     }
@@ -131,7 +134,10 @@ class ConvertimCartItemTest extends TestCase
                 'key' => 'value',
             ],
             'In Stock',
-            '30'
+            '30',
+            [
+                new ConvertimCartItemService('1', 'Prodlouzrena zaruka', '100', '120'),
+            ]
         );
 
         $this->assertJsonStringEqualsJsonString(
@@ -175,6 +181,14 @@ class ConvertimCartItemTest extends TestCase
                 ],
                 'availability' => 'In Stock',
                 'loyaltyPoints' => '30',
+                'cartItemServices' => [
+                    [
+                        'serviceId' => '1',
+                        'serviceName' => 'Prodlouzrena zaruka',
+                        'priceWithoutVat' => '100',
+                        'priceWithVat' => '120',
+                    ]
+                ],
             ])
         );
     }
