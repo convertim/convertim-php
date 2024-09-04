@@ -30,6 +30,16 @@ class ConvertimOrderItemData
     private $priceWithVat;
 
     /**
+     * @var string|null
+     */
+    private $loyaltyPoints;
+
+    /**
+     * @var \Convertim\Cart\ConvertimCartItemService[]
+     */
+    private $cartItemServices;
+
+    /**
      * @var string
      */
     private $vatRate;
@@ -47,6 +57,8 @@ class ConvertimOrderItemData
      * @param string $priceWithVat
      * @param string $vatRate
      * @param array $extra
+     * @param string|null $loyaltyPoints
+     * @param \Convertim\Cart\ConvertimCartItemService[] $cartItemServices
      */
     public function __construct(
         $productId,
@@ -55,7 +67,9 @@ class ConvertimOrderItemData
         $priceWithoutVat,
         $priceWithVat,
         $vatRate,
-        $extra
+        $extra,
+        $loyaltyPoints = null,
+        $cartItemServices = []
     ) {
         $this->productId = $productId;
         $this->productName = $productName;
@@ -64,6 +78,8 @@ class ConvertimOrderItemData
         $this->priceWithVat = $priceWithVat;
         $this->vatRate = $vatRate;
         $this->extra = $extra;
+        $this->loyaltyPoints = $loyaltyPoints;
+        $this->cartItemServices = $cartItemServices;
     }
 
     /**
@@ -120,5 +136,21 @@ class ConvertimOrderItemData
     public function getExtra()
     {
         return $this->extra;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLoyaltyPoints()
+    {
+        return $this->loyaltyPoints;
+    }
+
+    /**
+     * @return \Convertim\Cart\ConvertimCartItemService[]
+     */
+    public function getCartItemServices()
+    {
+        return $this->cartItemServices;
     }
 }

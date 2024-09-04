@@ -25,17 +25,24 @@ class ConvertimCartItemService implements \JsonSerializable
     private $priceWithVat;
 
     /**
+     * @var string|null
+     */
+    private $loyaltyPoints;
+
+    /**
      * @param string $serviceId
      * @param string $serviceName
      * @param string $priceWithoutVat
      * @param string $priceWithVat
+     * @param string|null $loyaltyPoints
      */
-    public function __construct($serviceId, $serviceName, $priceWithoutVat, $priceWithVat)
+    public function __construct($serviceId, $serviceName, $priceWithoutVat, $priceWithVat, $loyaltyPoints)
     {
         $this->serviceId = $serviceId;
         $this->serviceName = $serviceName;
         $this->priceWithoutVat = $priceWithoutVat;
         $this->priceWithVat = $priceWithVat;
+        $this->loyaltyPoints = $loyaltyPoints;
     }
 
 
@@ -46,6 +53,7 @@ class ConvertimCartItemService implements \JsonSerializable
             'serviceName' => $this->serviceName,
             'priceWithoutVat' => $this->priceWithoutVat,
             'priceWithVat' => $this->priceWithVat,
+            'loyaltyPoints' => $this->loyaltyPoints,
         ];
     }
 }
