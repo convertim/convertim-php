@@ -35,7 +35,7 @@ class ConvertimOrderItemData
     private $loyaltyPoints;
 
     /**
-     * @var \Convertim\Cart\ConvertimCartItemService[]
+     * @var \Convertim\Order\ConvertimOrderItemServiceData[]
      */
     private $cartItemServices;
 
@@ -58,7 +58,7 @@ class ConvertimOrderItemData
      * @param string $vatRate
      * @param array $extra
      * @param string|null $loyaltyPoints
-     * @param \Convertim\Cart\ConvertimCartItemService[] $cartItemServices
+     * @param \Convertim\Order\ConvertimOrderItemServiceData[] $cartItemServices
      */
     public function __construct(
         $productId,
@@ -147,7 +147,7 @@ class ConvertimOrderItemData
     }
 
     /**
-     * @return \Convertim\Cart\ConvertimCartItemService[]
+     * @return \Convertim\Order\ConvertimOrderItemServiceData[]
      */
     public function getCartItemServices()
     {

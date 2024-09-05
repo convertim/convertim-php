@@ -295,7 +295,7 @@ class ConvertimOrderDataFactory
     private function mapConvertimCartItemServices($cartItemServices)
     {
         return array_map(function ($cartItemService) {
-            return new ConvertimCartItemService(
+            return new ConvertimOrderItemServiceData(
                 $cartItemService['id'],
                 $cartItemService['name'],
                 $cartItemService['priceWithVat'],
