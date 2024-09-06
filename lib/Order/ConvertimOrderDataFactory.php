@@ -154,12 +154,12 @@ class ConvertimOrderDataFactory
         }
 
         $romaniaData = null;
-        if ($billingAddressJsonArray && in_array('romaniaData', $billingAddressJsonArray)) {
+        if ($billingAddressJsonArray && array_key_exists('romaniaData', $billingAddressJsonArray)) {
             $romaniaData = new RomaniaData($billingAddressJsonArray['romaniaData']['judet'], $billingAddressJsonArray['romaniaData']['orase']);
         }
 
         $houseNumber = null;
-        if ($billingAddressJsonArray && in_array('houseNumber', $billingAddressJsonArray)) {
+        if ($billingAddressJsonArray && array_key_exists('houseNumber', $billingAddressJsonArray)) {
             $houseNumber = $billingAddressJsonArray['houseNumber'];
         }
 
@@ -186,12 +186,12 @@ class ConvertimOrderDataFactory
     public function createConvertimCustomerDeliveryAddressDataFromJsonArray($deliveryAddressJsonArray)
     {
         $romaniaData = null;
-        if ($deliveryAddressJsonArray && in_array('romaniaData', $deliveryAddressJsonArray)) {
+        if ($deliveryAddressJsonArray && array_key_exists('romaniaData', $deliveryAddressJsonArray)) {
             $romaniaData = new RomaniaData($deliveryAddressJsonArray['romaniaData']['judet'], $deliveryAddressJsonArray['romaniaData']['orase']);
         }
 
         $houseNumber = null;
-        if ($deliveryAddressJsonArray && in_array('houseNumber', $deliveryAddressJsonArray)) {
+        if ($deliveryAddressJsonArray && array_key_exists('houseNumber', $deliveryAddressJsonArray)) {
             $houseNumber = $deliveryAddressJsonArray['houseNumber'];
         }
 
