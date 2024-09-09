@@ -2,7 +2,7 @@
 
 namespace Convertim\Cart;
 
-class ConvertimCustomValidationZipResponse
+class ConvertimCustomValidationZipResponse implements \JsonSerializable
 {
     /**
      * @var boolean
@@ -24,19 +24,11 @@ class ConvertimCustomValidationZipResponse
         $this->cities = $cities;
     }
 
-    /**
-     * @return bool
-     */
-    public function isValid(): bool
+    function jsonSerialize()
     {
-        return $this->isValid;
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getCities(): array
-    {
-        return $this->cities;
+        return [
+            'isValid' => $this->isValid,
+            'cities' => $this->cities,
+        ];
     }
 }
