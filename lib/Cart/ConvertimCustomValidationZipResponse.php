@@ -15,13 +15,20 @@ class ConvertimCustomValidationZipResponse implements \JsonSerializable
     private $cities;
 
     /**
+     * @var array
+     */
+    private $extraData;
+
+    /**
      * @param bool $isValid
      * @param string[] $cities
+     * @param array $extraData
      */
-    public function __construct(bool $isValid, array $cities)
+    public function __construct($isValid, $cities, $extraData = [])
     {
         $this->isValid = $isValid;
         $this->cities = $cities;
+        $this->extraData = $extraData;
     }
 
     function jsonSerialize()
@@ -29,6 +36,7 @@ class ConvertimCustomValidationZipResponse implements \JsonSerializable
         return [
             'isValid' => $this->isValid,
             'cities' => $this->cities,
+            'extraData' => $this->extraData,
         ];
     }
 }
