@@ -224,7 +224,7 @@ class ConvertimOrderDataFactory
 
         $customZipExtraData = null;
         if (array_key_exists('customZipExtraData', $transportJsonArray) && $transportJsonArray['customZipExtraData']) {
-            $customZipExtraData = $this->createConvertimOrderTransportExtraDataFromJsonArray($transportJsonArray['customZipExtraData']);
+            $customZipExtraData = $transportJsonArray['customZipExtraData'];
         }
 
         return new ConvertimOrderTransportData(
