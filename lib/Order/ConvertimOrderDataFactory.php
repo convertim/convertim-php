@@ -222,6 +222,11 @@ class ConvertimOrderDataFactory
             $extraData = $this->createConvertimOrderTransportExtraDataFromJsonArray($transportJsonArray['extra']);
         }
 
+        $customZipExtraData = null;
+        if (array_key_exists('customZipExtraData', $transportJsonArray) && $transportJsonArray['customZipExtraData']) {
+            $customZipExtraData = $this->createConvertimOrderTransportExtraDataFromJsonArray($transportJsonArray['customZipExtraData']);
+        }
+
         return new ConvertimOrderTransportData(
             $transportJsonArray['uuid'],
             $transportJsonArray['priceWithoutVat'],
@@ -229,7 +234,8 @@ class ConvertimOrderDataFactory
             $transportJsonArray['vatRate'],
             $transportJsonArray['source'],
             $transportJsonArray['type'],
-            $extraData
+            $extraData,
+            $customZipExtraData
         );
     }
 

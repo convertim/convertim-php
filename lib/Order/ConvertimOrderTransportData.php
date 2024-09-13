@@ -45,6 +45,11 @@ class ConvertimOrderTransportData
     private $services;
 
     /**
+     * @var array
+     */
+    private $customZipExtra;
+
+    /**
      * @param string $uuid
      * @param string $priceWithoutVat
      * @param string $priceWithVat
@@ -53,6 +58,7 @@ class ConvertimOrderTransportData
      * @param string|null $type
      * @param \Convertim\Order\ConvertimOrderTransportExtraData|null $extra
      * @param \Convertim\Order\ConvertimOrderTransportServiceData[] $services
+     * @param array $customZipExtra
      */
     public function __construct(
         $uuid,
@@ -62,7 +68,8 @@ class ConvertimOrderTransportData
         $source = null,
         $type = null,
         $extra = null,
-        $services = []
+        $services = [],
+        $customZipExtra = []
     ) {
         $this->uuid = $uuid;
         $this->type = $type;
@@ -72,6 +79,7 @@ class ConvertimOrderTransportData
         $this->vatRate = $vatRate;
         $this->extra = $extra;
         $this->services = $services;
+        $this->customZipExtra = $customZipExtra;
     }
 
     /**
@@ -136,5 +144,13 @@ class ConvertimOrderTransportData
     public function getServices()
     {
         return $this->services;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCustomZipExtra()
+    {
+        return $this->customZipExtra;
     }
 }
