@@ -10,7 +10,7 @@ class ConvertimCustomValidationZipResponse implements \JsonSerializable
     private $isValid;
 
     /**
-     * @var string[]
+     * @var ConvertimCustomValidationZipCityResponse[]
      */
     private $cities;
 
@@ -21,7 +21,7 @@ class ConvertimCustomValidationZipResponse implements \JsonSerializable
 
     /**
      * @param bool $isValid
-     * @param string[] $cities
+     * @param ConvertimCustomValidationZipCityResponse[] $cities
      * @param array $extraData
      */
     public function __construct($isValid, $cities, $extraData = [])
