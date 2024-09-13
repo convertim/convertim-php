@@ -235,6 +235,7 @@ class ConvertimOrderDataFactory
             $transportJsonArray['source'],
             $transportJsonArray['type'],
             $extraData,
+            [],
             $customZipExtraData
         );
     }
