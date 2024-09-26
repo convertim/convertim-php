@@ -95,6 +95,11 @@ class ConvertimOrderDataFactory
             $secureCode = $orderJsonArray['header']['secureCode'];
         }
 
+        $essoxData = null;
+        if (array_key_exists('essox', $orderJsonArray) && $orderJsonArray['essox'] !== null) {
+            $essoxData = $this->createConvertimOrderEssoxDataFromJsonArray($orderJsonArray['essox']);
+        }
+
         return new ConvertimOrderData(
             $orderJsonArray['header']['uuid'],
             $orderJsonArray['header']['comment'],
@@ -117,7 +122,8 @@ class ConvertimOrderDataFactory
             $trustPayData,
             $viesResultData,
             $orderJsonArray['header']['usePriceWithoutVat'],
-            $secureCode
+            $secureCode,
+            $essoxData
         );
     }
 
@@ -447,6 +453,17 @@ class ConvertimOrderDataFactory
             $viesResult['requestIdentifier'],
             $viesResult['originalVatNumber'],
             $viesResult['vatNumber']
+        );
+    }
+
+    /**
+     * @param $essox
+     * @return \Convertim\Order\ConvertimOrderEssoxData
+     */
+    private function createConvertimOrderEssoxDataFromJsonArray($essox)
+    {
+        return new ConvertimOrderEssoxData(
+            $essox['contractId']
         );
     }
 }
