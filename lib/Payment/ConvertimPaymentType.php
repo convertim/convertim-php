@@ -19,4 +19,6 @@ class ConvertimPaymentType
     const CONVERTIM_PAYMENT_TYPE_COMGATE = 'comgate';
 
     const CONVERTIM_PAYMENT_TYPE_TRUST_PAY = 'trustPay';
+
+    const CONVERTIM_PAYMENT_TYPE_ESSOX = 'essox';
 }
