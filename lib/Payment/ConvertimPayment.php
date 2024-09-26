@@ -86,6 +86,11 @@ class ConvertimPayment implements \JsonSerializable
     private $differentPaymentDataForTransports;
 
     /**
+     * @var \Convertim\Payment\ConvertimEssoxData
+     */
+    private $essox;
+
+    /**
      * @param string $uuid
      * @param string $type
      * @param string $name
@@ -102,6 +107,7 @@ class ConvertimPayment implements \JsonSerializable
      * @param \Convertim\Payment\ConvertimComgateData|null $comgate
      * @param \Convertim\Payment\ConvertimTrustPayData|null $trustPay
      * @param \Convertim\Payment\ConvertimDifferentPaymentDataForTransports[] $differentPaymentDataForTransports
+     * @param \Convertim\Payment\ConvertimEssoxData|null $essoxData
      */
     public function __construct(
         $uuid,
@@ -119,7 +125,8 @@ class ConvertimPayment implements \JsonSerializable
         $stripe = null,
         $comgate = null,
         $trustPay = null,
-        $differentPaymentDataForTransports = []
+        $differentPaymentDataForTransports = [],
+        $essoxData = null
     ) {
         $this->uuid = $uuid;
         $this->type = $type;
@@ -136,6 +143,7 @@ class ConvertimPayment implements \JsonSerializable
         $this->stripe = $stripe;
         $this->comgate = $comgate;
         $this->trustPay = $trustPay;
+        $this->essox = $essoxData;
         $this->differentPaymentDataForTransports = $differentPaymentDataForTransports;
     }
 
@@ -161,6 +169,7 @@ class ConvertimPayment implements \JsonSerializable
             'comgate' => $this->comgate,
             'trustPay' => $this->trustPay,
             'differentPaymentDataForTransports' => $this->differentPaymentDataForTransports,
+            'essox' => $this->essox,
         ];
     }
 }
