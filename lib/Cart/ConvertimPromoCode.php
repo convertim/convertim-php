@@ -25,17 +25,24 @@ class ConvertimPromoCode implements \JsonSerializable
     private $description;
 
     /**
+     * @var boolean
+     */
+    private $isVisible;
+
+    /**
      * @param string $uuid
      * @param string $code
      * @param string $discount
      * @param string $description
+     * @param boolean $isVisible
      */
-    public function __construct($uuid, $code, $discount, $description = null)
+    public function __construct($uuid, $code, $discount, $description = null, $isVisible = true)
     {
         $this->uuid = $uuid;
         $this->code = $code;
         $this->discount = $discount;
         $this->description = $description;
+        $this->isVisible = $isVisible;
     }
 
     /**
@@ -48,6 +55,7 @@ class ConvertimPromoCode implements \JsonSerializable
             'code' => $this->code,
             'discount' => $this->discount,
             'description' => $this->description,
+            'isVisible' => $this->isVisible,
         ];
     }
 }
