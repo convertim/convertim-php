@@ -9,4 +9,6 @@ class ConvertimTransportSources
     const SOURCE_PACKETA = 'packeta';
     const SOURCE_SK_DPD = 'sk-dpd';
     const SOURCE_STORES = 'stores';
+    const SOURCE_BALIKOVNA = 'balikovna';
+    const SOURCE_SLOVAKIA_POST = 'slovenska-posta';
 }
