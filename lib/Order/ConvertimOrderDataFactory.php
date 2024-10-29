@@ -160,7 +160,7 @@ class ConvertimOrderDataFactory
         }
 
         $romaniaData = null;
-        if ($billingAddressJsonArray && array_key_exists('romaniaData', $billingAddressJsonArray)) {
+        if ($billingAddressJsonArray && array_key_exists('romaniaData', $billingAddressJsonArray) && $billingAddressJsonArray['romaniaData'] !== null) {
             $romaniaData = new RomaniaData($billingAddressJsonArray['romaniaData']['judet'], $billingAddressJsonArray['romaniaData']['orase']);
         }
 
@@ -192,7 +192,7 @@ class ConvertimOrderDataFactory
     public function createConvertimCustomerDeliveryAddressDataFromJsonArray($deliveryAddressJsonArray)
     {
         $romaniaData = null;
-        if ($deliveryAddressJsonArray && array_key_exists('romaniaData', $deliveryAddressJsonArray)) {
+        if ($deliveryAddressJsonArray && array_key_exists('romaniaData', $deliveryAddressJsonArray) && $deliveryAddressJsonArray['romaniaData'] !== null) {
             $romaniaData = new RomaniaData($deliveryAddressJsonArray['romaniaData']['judet'], $deliveryAddressJsonArray['romaniaData']['orase']);
         }
 
