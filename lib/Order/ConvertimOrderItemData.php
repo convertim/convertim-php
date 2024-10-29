@@ -50,6 +50,11 @@ class ConvertimOrderItemData
     private $extra;
 
     /**
+     * @var array
+     */
+    private $discounts;
+
+    /**
      * @param string $productId
      * @param string $productName
      * @param float|int|string $quantity
@@ -59,6 +64,7 @@ class ConvertimOrderItemData
      * @param array $extra
      * @param string|null $loyaltyPoints
      * @param \Convertim\Order\ConvertimOrderItemServiceData[] $cartItemServices
+     * @param array $discounts
      */
     public function __construct(
         $productId,
@@ -69,7 +75,8 @@ class ConvertimOrderItemData
         $vatRate,
         $extra,
         $loyaltyPoints = null,
-        $cartItemServices = []
+        $cartItemServices = [],
+        $discounts = []
     ) {
         $this->productId = $productId;
         $this->productName = $productName;
@@ -80,6 +87,7 @@ class ConvertimOrderItemData
         $this->extra = $extra;
         $this->loyaltyPoints = $loyaltyPoints;
         $this->cartItemServices = $cartItemServices;
+        $this->discounts = $discounts;
     }
 
     /**
@@ -152,5 +160,13 @@ class ConvertimOrderItemData
     public function getCartItemServices()
     {
         return $this->cartItemServices;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDiscounts(): array
+    {
+        return $this->discounts;
     }
 }

@@ -301,7 +301,8 @@ class ConvertimOrderDataFactory
             $orderItemJsonArray['vatRate'],
             $orderItemJsonArray['extra'],
             $orderItemJsonArray['loyaltyPoints'],
-            $this->mapConvertimCartItemServices($orderItemJsonArray['cartItemServices'])
+            $this->mapConvertimCartItemServices($orderItemJsonArray['cartItemServices']),
+            $orderItemJsonArray['discounts'],
         );
     }
 
