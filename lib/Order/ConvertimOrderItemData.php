@@ -163,9 +163,9 @@ class ConvertimOrderItemData
     }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getDiscounts(): array
+    public function getDiscounts(): ?array
     {
         return $this->discounts;
     }
