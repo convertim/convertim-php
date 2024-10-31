@@ -52,6 +52,7 @@ class ConvertimStoreOpeningHour implements \JsonSerializable
         $this->closeAfternoon = $closeAfternoon;
     }
 
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return [

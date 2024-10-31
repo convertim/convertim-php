@@ -31,6 +31,7 @@ class ConvertimCustomValidationZipResponse implements \JsonSerializable
         $this->extraData = $extraData;
     }
 
+    #[\ReturnTypeWillChange]
     function jsonSerialize()
     {
         return [

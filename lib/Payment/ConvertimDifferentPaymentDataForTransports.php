@@ -38,6 +38,7 @@ class ConvertimDifferentPaymentDataForTransports implements \JsonSerializable
         $this->vat = $vat;
     }
 
+    #[\ReturnTypeWillChange]
     function jsonSerialize()
     {
         return [

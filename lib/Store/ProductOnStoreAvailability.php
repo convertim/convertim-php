@@ -28,6 +28,7 @@ class ProductOnStoreAvailability implements \JsonSerializable
     /**
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return [

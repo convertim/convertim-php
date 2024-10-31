@@ -24,7 +24,7 @@ class ConvertimCustomValidationZipCityResponse implements \JsonSerializable
         $this->city = $city;
     }
 
-
+    #[\ReturnTypeWillChange]
     function jsonSerialize()
     {
         return [

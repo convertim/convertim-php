@@ -45,7 +45,7 @@ class ConvertimCartItemService implements \JsonSerializable
         $this->loyaltyPoints = $loyaltyPoints;
     }
 
-
+    #[\ReturnTypeWillChange]
     function jsonSerialize()
     {
         return [

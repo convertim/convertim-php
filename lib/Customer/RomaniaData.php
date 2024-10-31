@@ -44,6 +44,7 @@ class RomaniaData implements \JsonSerializable
     /**
      * @return array
      */
+    #[\ReturnTypeWillChange]
     function jsonSerialize()
     {
         return [

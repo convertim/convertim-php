@@ -101,7 +101,7 @@ class ConvertimStore implements \JsonSerializable
         $this->productOnStoreAvailability = $productOnStoreAvailability;
     }
 
-
+    #[\ReturnTypeWillChange]
     function jsonSerialize()
     {
         return [

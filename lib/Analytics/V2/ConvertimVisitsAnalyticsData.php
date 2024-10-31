@@ -33,7 +33,7 @@ class ConvertimVisitsAnalyticsData extends ConvertimBaseAnalyticsData implements
         $this->userAgent = $userAgent;
     }
 
-
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return array_merge(

@@ -49,6 +49,7 @@ class DeliveryAddress extends Address
     /**
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return array_merge(

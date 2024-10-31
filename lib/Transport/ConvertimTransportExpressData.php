@@ -24,6 +24,7 @@ class ConvertimTransportExpressData implements \JsonSerializable
         $this->validZipsCities = $validZipsCities;
     }
 
+    #[\ReturnTypeWillChange]
     function jsonSerialize()
     {
         return [

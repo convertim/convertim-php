@@ -25,6 +25,7 @@ class LastSelectedPickupPoint implements \JsonSerializable
         $this->code = $code;
     }
 
+    #[\ReturnTypeWillChange]
     function jsonSerialize()
     {
         return [

@@ -54,6 +54,7 @@ abstract class ConvertimBaseAnalyticsData implements \JsonSerializable
         $this->customerHash = $customerHash;
     }
 
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return [

@@ -170,6 +170,7 @@ class ConvertimTransport implements \JsonSerializable
         $this->pickupPointType = $pickupPointType;
     }
 
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return [

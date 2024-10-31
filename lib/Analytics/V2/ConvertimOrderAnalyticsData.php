@@ -69,7 +69,7 @@ class ConvertimOrderAnalyticsData extends ConvertimBaseAnalyticsData implements 
         $this->paymentPrice = $paymentPrice;
     }
 
-
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return array_merge(
