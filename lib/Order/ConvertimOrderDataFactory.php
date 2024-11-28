@@ -134,7 +134,6 @@ class ConvertimOrderDataFactory
     public function createConvertimCustomerDataFromJsonArray(array $customerJsonArray)
     {
         $deliveryAddressData = $this->createConvertimCustomerDeliveryAddressDataFromJsonArray($customerJsonArray['deliveryAddress']);
-
         $billingAddressData = $this->createConvertimCustomerBillingAddressDataFromJsonArray($customerJsonArray['billingAddress']);
 
         return new ConvertimCustomerData(
@@ -145,7 +144,8 @@ class ConvertimOrderDataFactory
             $customerJsonArray['telephoneNumber'],
             $deliveryAddressData,
             $billingAddressData,
-            $customerJsonArray['eshopCustomerUuid']
+            $customerJsonArray['eshopCustomerUuid'],
+            array_key_exists('buyForCompany', $customerJsonArray) ? $customerJsonArray['buyForCompany'] : false
         );
     }
 

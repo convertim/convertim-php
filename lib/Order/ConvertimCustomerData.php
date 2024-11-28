@@ -45,6 +45,11 @@ class ConvertimCustomerData
     private $customerEshopUuid;
 
     /**
+     * @var boolean
+     */
+    private $buyForCompany;
+
+    /**
      * @param string $firstName
      * @param string $lastName
      * @param string $email
@@ -53,6 +58,7 @@ class ConvertimCustomerData
      * @param \Convertim\Order\ConvertimCustomerDeliveryAddressData $convertimCustomerDeliveryAddressData
      * @param \Convertim\Order\ConvertimCustomerBillingAddressData|null $convertimCustomerBillingAddressData
      * @param string|null $customerEshopUuid
+     * @param boolean $buyForCompany
      */
     public function __construct(
         $firstName,
@@ -62,7 +68,8 @@ class ConvertimCustomerData
         $telephoneNumber,
         $convertimCustomerDeliveryAddressData,
         $convertimCustomerBillingAddressData = null,
-        $customerEshopUuid = null
+        $customerEshopUuid = null,
+        $buyForCompany = false
     ) {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
@@ -72,6 +79,7 @@ class ConvertimCustomerData
         $this->convertimCustomerDeliveryAddressData = $convertimCustomerDeliveryAddressData;
         $this->convertimCustomerBillingAddressData = $convertimCustomerBillingAddressData;
         $this->customerEshopUuid = $customerEshopUuid;
+        $this->buyForCompany = $buyForCompany;
     }
 
     /**
@@ -144,5 +152,13 @@ class ConvertimCustomerData
     public function getConvertimCustomerBillingAddressData()
     {
         return $this->convertimCustomerBillingAddressData;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isBuyForCompany()
+    {
+        return $this->buyForCompany;
     }
 }
