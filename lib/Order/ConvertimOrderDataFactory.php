@@ -42,7 +42,7 @@ class ConvertimOrderDataFactory
 
         $adyenData = null;
         if (array_key_exists('adyen', $orderJsonArray) && $orderJsonArray['adyen'] !== null) {
-            $goPayData = $this->createConvertimOrderAdyenDataFromJsonArray($orderJsonArray['adyen']);
+            $adyenData = $this->createConvertimOrderAdyenDataFromJsonArray($orderJsonArray['adyen']);
         }
 
         $paypalData = null;
@@ -359,7 +359,7 @@ class ConvertimOrderDataFactory
     public function createConvertimOrderAdyenDataFromJsonArray($adyenJsonArray)
     {
         return new ConvertimOrderAdyenData(
-            $adyenJsonArray['id']
+            $adyenJsonArray['pspReference']
         );
     }
 
