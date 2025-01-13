@@ -11,7 +11,7 @@ class ApiClient
     const CONVERTIM_AUTH_HEADER_NAME = 'x-convertim-auth';
     const CONVERTIM_AUTH_HEADER = 'Ahyck8NcrHpwP8uP8VpfjhzmNuWKrTAJphV4KtrRmnAKosTR46VVH7Dys2NtUAWiWuvRoqkDRvHq6hbkMKWyauPruKa8F2xGz2g3';
 
-    const CONVERTIM_BASE_URI_DEVEL = 'https://convertim-api.tom-aws.eu';
+    const CONVERTIM_BASE_URI_DEVEL = 'https://api.convertim.dev';
     const CONVERTIM_BASE_URI_PRODUCTION = 'https://api.convertim.com';
 
     /**
