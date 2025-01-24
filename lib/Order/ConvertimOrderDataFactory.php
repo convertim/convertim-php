@@ -433,7 +433,7 @@ class ConvertimOrderDataFactory
     {
         return new ConvertimOrderTrustPayData(
             $trustPay['PaymentRequestId'],
-            $trustPay['state'],
+            isset($trustPay['PaymentInformation']['Status']) ? $trustPay['PaymentInformation']['Status'] : 'unknown',
             $trustPay['ResultInfo']
         );
     }
