@@ -11,4 +11,7 @@ class ConvertimTransportSources
     const SOURCE_STORES = 'stores';
     const SOURCE_BALIKOVNA = 'balikovna';
     const SOURCE_SLOVAKIA_POST = 'slovenska-posta';
+    const SOURCE_GLS = 'gls';
+    const SOURCE_FOXPOST_HU = 'foxpost';
+    const SOURCE_BALIKOVO_SK = 'balikovo';
 }
